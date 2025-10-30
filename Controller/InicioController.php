@@ -34,6 +34,7 @@
 
         if($resultado)
         {
+            $_SESSION["ConsecutivoUsuario"] = $resultado["ConsecutivoUsuario"];
             $_SESSION["Nombre"] = $resultado["Nombre"];
             $_SESSION["NombrePerfil"] = $resultado["NombrePerfil"];
 

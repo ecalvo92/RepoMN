@@ -7,67 +7,88 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  
-  <?php
+
+<?php
     ShowCSS();
   ?>
 
-  <body>
+<body>
     <div class="layout-wrapper layout-content-navbar">
-      <div class="layout-container">
+        <div class="layout-container">
 
-        <?php ShowMenu(); ?>
+            <?php ShowMenu(); ?>
 
-        <div class="layout-page">
-         
-          <?php ShowNav(); ?>
+            <div class="layout-page">
 
-          <div class="content-wrapper">
+                <?php ShowNav(); ?>
 
-            <div class="container-xxl flex-grow-1 container-p-y">
-             
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Nombre</th>
-                    <th>Precio</th>
-                    <th>Estado</th>
-                    <th>Imagen</th>
-                  </tr>
-                </thead>
-                <tbody>
+                <div class="content-wrapper">
 
-                  <?php
-                    foreach ($resultado as $fila)
-                    {
-                        echo "<tr>";
-                        echo "<td>" . $fila["ConsecutivoProducto"] . "</td>";
-                        echo "<td>" . $fila["Nombre"] . "</td>";
-                        echo "<td>" . $fila["Precio"] . "</td>";
-                        echo "<td>" . $fila["Estado"] . "</td>";
-                        echo "<td>" . $fila["Imagen"] . "</td>";
-                        echo "</tr>";
-                    }
-                  ?>
+                    <div class="container-xxl flex-grow-1 container-p-y">
 
-                </tbody>
-              </table>
+                        <div class="card mb-4 mt-4">
+                            <h4 class="card-header">Productos</h4>
 
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-10">
+                                    <div class="card-body">
+
+                                        <?php
+                                            if(isset($_POST["Mensaje"]))
+                                            {
+                                                echo '<div class="alert alert-primary centrado">' . $_POST["Mensaje"] . '</div>';
+                                            }
+                                        ?>
+
+                                        <table class="table table-hover mb-4">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Nombre</th>
+                                                    <th>Precio</th>
+                                                    <th>Estado</th>
+                                                    <th>Imagen</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                <?php
+                                                  foreach ($resultado as $fila)
+                                                  {
+                                                      echo "<tr>";
+                                                      echo "<td>" . $fila["ConsecutivoProducto"] . "</td>";
+                                                      echo "<td>" . $fila["Nombre"] . "</td>";
+                                                      echo "<td>" . $fila["Precio"] . "</td>";
+                                                      echo "<td>" . $fila["Estado"] . "</td>";
+                                                      echo "<td>" . $fila["Imagen"] . "</td>";
+                                                      echo "</tr>";
+                                                  }
+                                                ?>
+
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <?php ShowFooter(); ?>
+
+                    <div class="content-backdrop fade"></div>
+                </div>
             </div>
-
-            <?php ShowFooter(); ?>
-
-            <div class="content-backdrop fade"></div>
-          </div>
         </div>
-      </div>
-      <div class="layout-overlay layout-menu-toggle"></div>
+        <div class="layout-overlay layout-menu-toggle"></div>
     </div>
 
     <?php
       ShowJS();
     ?>
-    
-  </body>
+
+</body>
+
 </html>

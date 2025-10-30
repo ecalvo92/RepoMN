@@ -3896,6 +3896,7 @@ textarea.form-control-lg {
 }
 .card-header:first-child {
   border-radius: 0.5rem 0.5rem 0 0;
+  text-align: center;
 }
 
 .card-footer {
