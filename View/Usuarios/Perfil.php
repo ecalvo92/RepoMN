@@ -2,7 +2,7 @@
   include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/View/LayoutInterno.php';
   include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/Controller/UsuarioController.php';
 
-  //$resultado = ConsultarProductos();
+  $resultado = ConsultarUsuario();
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +27,7 @@
                     <div class="container-xxl flex-grow-1 container-p-y">
 
                         <div class="card mb-4 mt-4">
-                            <h4 class="card-header">Infomación del Perfil</h4>
+                            <h4 class="card-header">Información del Perfil</h4>
 
                             <div class="row">
                                 <div class="col-md-1"></div>
@@ -46,25 +46,25 @@
                                             <div class="mb-3">
                                                 <label class="form-label">Identificación</label>
                                                 <input type="text" class="form-control" id="Identificacion"
-                                                    name="Identificacion" onkeyup="ConsultarNombre();" />
+                                                    name="Identificacion" value="<?php echo $resultado["Identificacion"]?>" onkeyup="ConsultarNombre();" />
                                             </div>
 
                                             <div class="mb-3">
                                                 <label class="form-label">Nombre</label>
                                                 <input type="text" class="form-control" id="Nombre" name="Nombre"
-                                                    readOnly="true" />
+                                                    readOnly="true" value="<?php echo $resultado["Nombre"]?>" />
                                             </div>
 
                                             <div class="mb-3">
                                                 <label class="form-label">Correo Electrónico</label>
                                                 <input type="email" class="form-control" id="CorreoElectronico"
-                                                    name="CorreoElectronico" />
+                                                    name="CorreoElectronico" value="<?php echo $resultado["CorreoElectronico"]?>" />
                                             </div>
 
                                             <div class="mb-3 form-password-toggle">
                                                 <label>Perfil</label>
                                                 <input type="text" class="form-control" id="Contrasenna"
-                                                    name="Contrasenna" readOnly="true" />
+                                                    name="Contrasenna" readOnly="true" value="<?php echo $resultado["NombrePerfil"]?>" />
                                             </div>
 
                                             <div class="d-flex justify-content-end">
