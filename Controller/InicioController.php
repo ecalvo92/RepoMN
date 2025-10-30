@@ -2,6 +2,11 @@
     include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/Controller/UtilesController.php';
     include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/Model/InicioModel.php';
 
+    if(session_status() == PHP_SESSION_NONE)
+    {
+        session_start();
+    }
+
     if(isset($_POST["btnCrearCuenta"]))
     {
         $identificacion = $_POST["Identificacion"];
@@ -27,8 +32,11 @@
 
         $resultado = ValidarCuentaModel($correoElectronico, $contrasenna);
 
-        if($resultado != null && $resultado -> num_rows > 0)
+        if($resultado)
         {
+            $_SESSION["Nombre"] = $resultado["Nombre"];
+            $_SESSION["NombrePerfil"] = $resultado["NombrePerfil"];
+
             header("Location: ../../View/Inicio/Principal.php");
             exit;
         }

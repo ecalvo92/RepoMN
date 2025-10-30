@@ -30,9 +30,15 @@
             $sentencia = "CALL ValidarCuenta('$correoElectronico', '$contrasenna')";
             $resultado = $context -> query($sentencia);
 
+            $datos = null;
+            while ($row = $resultado->fetch_assoc()) {
+                $datos = $row;
+            }
+
+            $resultado->free();
             CloseConnection($context);
 
-            return $resultado;
+            return $datos;
         }
         catch(Exception $error)
         {

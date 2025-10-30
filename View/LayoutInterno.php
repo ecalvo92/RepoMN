@@ -1,5 +1,10 @@
 <?php
 
+    if(session_status() == PHP_SESSION_NONE)
+    {
+        session_start();
+    }
+
     function ShowCSS()
     {
       echo '
@@ -65,6 +70,15 @@
 
     function ShowNav()
     {
+        $nombre = "";
+        $nombrePerfil = "";
+
+        if(isset($_SESSION["Nombre"]))
+        {
+          $nombre = $_SESSION["Nombre"];
+          $nombrePerfil = $_SESSION["NombrePerfil"];
+        }
+
         echo '
          <nav
             class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
@@ -91,15 +105,14 @@
               <ul class="navbar-nav flex-row align-items-center ms-auto">
                 
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                      John Doe               
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">' . $nombre . '
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
                     <li>
                       <a class="dropdown-item" href="#">
                         <div class="d-flex">
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block text-center">Perfil Admin</span>
+                            <span class="fw-semibold d-block text-center">Perfil ' . $nombrePerfil . '</span>
                           </div>
                         </div>
                       </a>
