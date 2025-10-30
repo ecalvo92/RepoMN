@@ -39,7 +39,7 @@
                 <tbody>
 
                   <?php
-                    while($fila = mysqli_fetch_array($resultado))
+                    foreach ($resultado as $fila)
                     {
                         echo "<tr>";
                         echo "<td>" . $fila["ConsecutivoProducto"] . "</td>";

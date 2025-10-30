@@ -42,28 +42,25 @@
  
         $resultado = ValidarCorreoModel($correoElectronico);
 
-        if($resultado && $resultado -> num_rows > 0)
+        if ($resultado)
         {
-            //Leer la información del resultado
-            $datos = mysqli_fetch_array($resultado);
-
             //Generar contraseña aleatoria
             $ContrasennaGenerada = GenerarContrasenna();
 
             //Actualizar la contraseña actual
-            $resultadoActualizar = ActualizarContrasennaModel($datos["ConsecutivoUsuario"], $ContrasennaGenerada);
+            $resultadoActualizar = ActualizarContrasennaModel($resultado["ConsecutivoUsuario"], $ContrasennaGenerada);
             
             if($resultadoActualizar)
             {
                 //Notificarle por correo la nueva contraseña
                 $mensaje = "<html><body>
-                Estimado(a) " . $datos["Nombre"] . "<br><br>
+                Estimado(a) " . $resultado["Nombre"] . "<br><br>
                 Se ha generado la siguiente contraseña de acceso: <b>" . $ContrasennaGenerada . "</b><br>
                 Procure realizar el cambio de su contraseña una vez que ingrese al sistema.<br><br>
                 Muchas gracias.
                 </body></html>";
 
-                EnviarCorreo('Recuperar Acceso', $mensaje, $datos["CorreoElectronico"]);
+                EnviarCorreo('Recuperar Acceso', $mensaje, $resultado["CorreoElectronico"]);
 
                 header("Location: ../../View/Inicio/IniciarSesion.php");
                 exit;

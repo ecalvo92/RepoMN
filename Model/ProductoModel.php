@@ -10,9 +10,15 @@
             $sentencia = "CALL ConsultarProductos()";
             $resultado = $context -> query($sentencia);
 
-            //CloseConnection($context);
+            $datos = [];
+            while ($row = $resultado->fetch_assoc()) {
+                $datos[] = $row;
+            }
 
-            return $resultado;
+            $resultado->free();
+            CloseConnection($context);
+
+            return $datos;
         }
         catch(Exception $error)
         {

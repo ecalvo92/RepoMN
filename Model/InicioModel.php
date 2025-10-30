@@ -50,9 +50,15 @@
             $sentencia = "CALL ValidarCorreo('$correoElectronico')";
             $resultado = $context -> query($sentencia);
 
-            //CloseConnection($context);
+            $datos = null;
+            while ($row = $resultado->fetch_assoc()) {
+                $datos = $row;
+            }
 
-            return $resultado;
+            $resultado->free();
+            CloseConnection($context);
+
+            return $datos;
         }
         catch(Exception $error)
         {

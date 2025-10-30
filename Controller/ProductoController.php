@@ -3,13 +3,7 @@
 
     function ConsultarProductos()
     {
-        $resultado = ConsultarProductosModel();
-
-        if($resultado && $resultado -> num_rows > 0)
-        {
-            //Leer la información del resultado
-            return $resultado;
-        }
+        return ConsultarProductosModel();
     }
 
 ?>
