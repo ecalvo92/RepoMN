@@ -27,7 +27,8 @@
     function ShowJS()
     {
       echo '
-        <script src="../js/jquery.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
         <script src="../js/popper.js"></script>
         <script src="../js/bootstrap.js"></script>
         <script src="../js/perfect-scrollbar.js"></script>
@@ -127,7 +128,7 @@
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="../Usuarios/Seguridad.php">
                         <i class="bx bx-cog me-2"></i>
                         <span class="align-middle">Seguridad</span>
                       </a>

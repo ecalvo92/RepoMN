@@ -1,8 +1,6 @@
 <?php
   include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/View/LayoutInterno.php';
   include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/Controller/UsuarioController.php';
-
-  $resultado = ConsultarUsuario();
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +25,7 @@
                     <div class="container-xxl flex-grow-1 container-p-y">
 
                         <div class="card mb-4 mt-4">
-                            <h4 class="card-header">Información del Perfil</h4>
+                            <h4 class="card-header">Información de Seguridad</h4>
 
                             <div class="row">
                                 <div class="col-md-1"></div>
@@ -41,35 +39,23 @@
                                             }
                                         ?>
 
-                                        <form id="formPerfil" class="mb-3" action="" method="POST">
+                                        <form id="formSeguridad" class="mb-3" action="" method="POST">
 
                                             <div class="mb-3">
-                                                <label class="form-label">Identificación</label>
-                                                <input type="text" class="form-control" id="Identificacion"
-                                                    name="Identificacion" value="<?php echo $resultado["Identificacion"]?>" onkeyup="ConsultarNombre();" />
+                                                <label class="form-label">Contraseña</label>
+                                                <input type="password" class="form-control" id="Contrasenna"
+                                                    name="Contrasenna" />
                                             </div>
 
                                             <div class="mb-3">
-                                                <label class="form-label">Nombre</label>
-                                                <input type="text" class="form-control" id="Nombre" name="Nombre"
-                                                    readOnly="true" value="<?php echo $resultado["Nombre"]?>" />
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <label class="form-label">Correo Electrónico</label>
-                                                <input type="email" class="form-control" id="CorreoElectronico"
-                                                    name="CorreoElectronico" value="<?php echo $resultado["CorreoElectronico"]?>" />
-                                            </div>
-
-                                            <div class="mb-3 form-password-toggle">
-                                                <label>Perfil</label>
-                                                <input type="text" class="form-control" id="NombrePerfil"
-                                                    name="NombrePerfil" readOnly="true" value="<?php echo $resultado["NombrePerfil"]?>" />
+                                                <label class="form-label">Confirmar Contraseña</label>
+                                                <input type="password" class="form-control" id="ConfirmarContrasenna"
+                                                    name="ConfirmarContrasenna" />
                                             </div>
 
                                             <div class="d-flex justify-content-end">
-                                                <button class="btn btn-primary d-grid w-25" id="btnActualizarPerfil"
-                                                    name="btnActualizarPerfil" type="submit">Procesar</button>
+                                                <button class="btn btn-primary d-grid w-25" id="btnActualizarSeguridad"
+                                                    name="btnActualizarSeguridad" type="submit">Procesar</button>
                                             </div>
                                         </form>
 
@@ -92,7 +78,7 @@
     <?php
       ShowJS();
     ?>
-    <script src="../js/Perfil.js"></script>
+    <script src="../js/Seguridad.js"></script>
 
 </body>
 

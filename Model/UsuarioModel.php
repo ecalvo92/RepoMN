@@ -27,4 +27,44 @@
         }
     }
 
+    function ActualizarPerfilModel($consecutivo,$identificacion,$nombre,$correoElectronico)
+    {
+        try
+        {
+            $context = OpenConnection();
+
+            $sentencia = "CALL ActualizarPerfil('$consecutivo', '$identificacion', '$nombre', '$correoElectronico')";
+            $resultado = $context -> query($sentencia);
+
+            CloseConnection($context);
+
+            return $resultado;
+        }
+        catch(Exception $error)
+        {
+            SaveError($error);
+            return false;
+        }
+    }
+
+    function ActualizarSeguridadModel($consecutivo,$contrasenna)
+    {
+        try
+        {
+            $context = OpenConnection();
+
+            $sentencia = "CALL ActualizarContrasenna('$consecutivo', '$contrasenna')";
+            $resultado = $context -> query($sentencia);
+
+            CloseConnection($context);
+
+            return $resultado;
+        }
+        catch(Exception $error)
+        {
+            SaveError($error);
+            return false;
+        }
+    }
+
 ?>

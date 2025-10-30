@@ -121,9 +121,13 @@ CREATE TABLE `tbusuario` (
 
 LOCK TABLES `tbusuario` WRITE;
 /*!40000 ALTER TABLE `tbusuario` DISABLE KEYS */;
-INSERT INTO `tbusuario` VALUES (2,'304590415','EDUARDO JOSE CALVO CASTILLO','ecalvo90415@ufide.ac.cr','90415',_binary '',2),(3,'208360632','BARRANTES BOGANTES ANTONY','abarrantes60632@ufide.ac.cr','G1A4MB0G',_binary '',2),(4,'207960874','BRANDON JOSUE CORELLA SANCHEZ','bcorella60874@ufide.ac.cr','5QGYZHGG',_binary '',2);
+INSERT INTO `tbusuario` VALUES (2,'304590415','EDUARDO JOSE CALVO CASTILLO','ecalvo90415@ufide.ac.cr','LDA',_binary '',2),(3,'208360632','BARRANTES BOGANTES ANTONY','abarrantes60632@ufide.ac.cr','saprissa',_binary '',1),(4,'207960874','BRANDON JOSUE CORELLA SANCHEZ','bcorella60874@ufide.ac.cr','Saprissa',_binary '',2);
 /*!40000 ALTER TABLE `tbusuario` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'mn_bd'
+--
 
 --
 -- Dumping routines for database 'mn_bd'
@@ -154,6 +158,36 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `ActualizarPerfil` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ActualizarPerfil`(
+	pConsecutivoUsuario int(11), 
+	pIdentificacion varchar(15),
+    pNombre varchar(255),
+    pCorreoElectronico varchar(100)
+)
+BEGIN
+
+	UPDATE 	tbUsuario
+	SET		Identificacion = pIdentificacion,
+			Nombre = pNombre,
+            CorreoElectronico = pCorreoElectronico
+    WHERE	ConsecutivoUsuario = pConsecutivoUsuario;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `ConsultarProductos` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -174,6 +208,39 @@ BEGIN
 			Estado,
 			Imagen
 	FROM 	tbproducto;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `ConsultarUsuario` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarUsuario`(
+    pConsecutivoUsuario int(11)
+)
+BEGIN
+
+	SELECT 	U.ConsecutivoUsuario,
+			U.Identificacion,
+			U.Nombre,
+			U.CorreoElectronico,
+			U.Contrasenna,
+			U.Estado,
+			U.ConsecutivoPerfil,
+            P.Nombre 'NombrePerfil'
+	FROM 	tbusuario U
+    INNER 	JOIN tbperfil P ON U.ConsecutivoPerfil = P.ConsecutivoPerfil
+    WHERE 	ConsecutivoUsuario = pConsecutivoUsuario;
 
 END ;;
 DELIMITER ;
@@ -280,14 +347,16 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `ValidarCuenta`(
 )
 BEGIN
 
-	SELECT 	ConsecutivoUsuario,
-			Identificacion,
-			Nombre,
-			CorreoElectronico,
-			Contrasenna,
-			Estado,
-			ConsecutivoPerfil
-	FROM 	tbusuario
+	SELECT 	U.ConsecutivoUsuario,
+			U.Identificacion,
+			U.Nombre,
+			U.CorreoElectronico,
+			U.Contrasenna,
+			U.Estado,
+			U.ConsecutivoPerfil,
+            P.Nombre 'NombrePerfil'
+	FROM 	tbusuario U
+    INNER 	JOIN tbperfil P ON U.ConsecutivoPerfil = P.ConsecutivoPerfil
     WHERE 	CorreoElectronico = pCorreoElectronico
 		AND Contrasenna = pContrasenna
         AND Estado = 1;
@@ -308,4 +377,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-10-15 21:04:56
+-- Dump completed on 2025-10-29 21:04:30
