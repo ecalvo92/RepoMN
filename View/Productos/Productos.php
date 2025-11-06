@@ -41,7 +41,7 @@
                                             }
                                         ?>
 
-                                        <table class="table table-hover mb-4">
+                                        <table id="tProductos" class="table mb-4">
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
@@ -88,6 +88,7 @@
     <?php
       ShowJS();
     ?>
+    <script src="../js/VerProductos.js"></script>
 
 </body>
 
