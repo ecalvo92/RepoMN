@@ -1,8 +1,6 @@
 <?php
   include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/View/LayoutInterno.php';
   include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/Controller/ProductoController.php';
-
-  $resultado = ConsultarProducto($_GET["id"]);
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +25,7 @@
                     <div class="container-xxl flex-grow-1 container-p-y">
 
                         <div class="card mb-4 mt-4">
-                            <h4 class="card-header">Actualizar Producto</h4>
+                            <h4 class="card-header">Agregar Producto</h4>
 
                             <div class="row">
                                 <div class="col-md-1"></div>
@@ -41,32 +39,23 @@
                                             }
                                         ?>
 
-                                        <form id="formActualizarProducto" class="mb-3" action="" method="POST" enctype="multipart/form-data">
+                                        <form id="formAgregarProducto" class="mb-3" action="" method="POST"
+                                            enctype="multipart/form-data">
 
-                                            <input type="hidden" id="ConsecutivoProducto" name="ConsecutivoProducto" 
-                                                value="<?php echo $resultado["ConsecutivoProducto"]?>">
-
-                                            <div class="row mb-3">
-                                                <div class="col-md-10">
-                                                    <label class="form-label">Nombre</label>
-                                                    <input type="text" class="form-control" id="Nombre"
-                                                    name="Nombre" value="<?php echo $resultado['Nombre']; ?>" />
-                                                </div>
-
-                                                <div class="col-md-2 d-flex align-items-end">
-                                                    <img src="<?php echo $resultado['Imagen']; ?>" width="100" height="100" />
-                                                </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Nombre</label>
+                                                <input type="text" class="form-control" id="Nombre" name="Nombre" />
                                             </div>
 
                                             <div class="mb-3">
                                                 <label class="form-label">Descripción</label>
-                                                <textarea class="form-control" id="Descripcion" name="Descripcion" rows="4"><?php echo $resultado["Descripcion"]?></textarea>
+                                                <textarea class="form-control" id="Descripcion" name="Descripcion"
+                                                    rows="4"></textarea>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label class="form-label">Precio</label>
-                                                <input type="text" class="form-control" id="Precio"
-                                                    name="Precio" value="<?php echo $resultado["Precio"]?>" />
+                                                <input type="text" class="form-control" id="Precio" name="Precio" />
                                             </div>
 
                                             <div class="mb-3 form-password-toggle">
@@ -76,8 +65,8 @@
                                             </div>
 
                                             <div class="d-flex justify-content-end">
-                                                <button class="btn btn-primary d-grid w-25" id="btnActualizarProducto"
-                                                    name="btnActualizarProducto" type="submit">Procesar</button>
+                                                <button class="btn btn-primary d-grid w-25" id="btnAgregarProducto"
+                                                    name="btnAgregarProducto" type="submit">Procesar</button>
                                             </div>
                                         </form>
 
@@ -100,7 +89,7 @@
     <?php
       ShowJS();
     ?>
-    <script src="../js/ActualizarProducto.js"></script>
+    <script src="../js/AgregarProducto.js"></script>
 
 </body>
 

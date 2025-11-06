@@ -29,7 +29,7 @@ CREATE TABLE `tberror` (
   `Mensaje` varchar(8000) NOT NULL,
   `FechaHora` datetime NOT NULL,
   PRIMARY KEY (`ConsecutivoError`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `tberror` (
 
 LOCK TABLES `tberror` WRITE;
 /*!40000 ALTER TABLE `tberror` DISABLE KEYS */;
-INSERT INTO `tberror` VALUES (2,'PROCEDURE mn_bd.CrearCuent does not exist','2025-10-08 20:12:33'),(3,'Unknown column \'CorreoElectronico\' in \'field list\'','2025-10-08 20:14:38');
+INSERT INTO `tberror` VALUES (2,'PROCEDURE mn_bd.CrearCuent does not exist','2025-10-08 20:12:33'),(3,'Unknown column \'CorreoElectronico\' in \'field list\'','2025-10-08 20:14:38'),(4,'PROCEDURE mn_bd.ActualizarProducto does not exist','2025-11-05 20:25:22'),(5,'PROCEDURE mn_bd.ActualizarProducto does not exist','2025-11-05 20:26:18'),(6,'PROCEDURE mn_bd.ActualizarProducto does not exist','2025-11-05 20:28:44'),(7,'Incorrect number of arguments for PROCEDURE mn_bd.ConsultarProducto; expected 1, got 0','2025-11-05 20:56:51');
 /*!40000 ALTER TABLE `tberror` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +90,7 @@ CREATE TABLE `tbproducto` (
 
 LOCK TABLES `tbproducto` WRITE;
 /*!40000 ALTER TABLE `tbproducto` DISABLE KEYS */;
-INSERT INTO `tbproducto` VALUES (1,'Play Station 5','Consola de videojuegos',550.00,_binary '','123456');
+INSERT INTO `tbproducto` VALUES (1,'asdsa','dasdsadsaorada',1233.00,_binary '','../img/chocolate-strawberry-png-05212024-7xxebp03yijbzkbi.png');
 /*!40000 ALTER TABLE `tbproducto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,13 +121,9 @@ CREATE TABLE `tbusuario` (
 
 LOCK TABLES `tbusuario` WRITE;
 /*!40000 ALTER TABLE `tbusuario` DISABLE KEYS */;
-INSERT INTO `tbusuario` VALUES (2,'304590415','EDUARDO JOSE CALVO CASTILLO','ecalvo90415@ufide.ac.cr','LDA',_binary '',2),(3,'208360632','BARRANTES BOGANTES ANTONY','abarrantes60632@ufide.ac.cr','saprissa',_binary '',1),(4,'207960874','BRANDON JOSUE CORELLA SANCHEZ','bcorella60874@ufide.ac.cr','Saprissa',_binary '',2);
+INSERT INTO `tbusuario` VALUES (2,'304590415','EDUARDO JOSE CALVO CASTILLO','ecalvo90415@ufide.ac.cr','LDA',_binary '',2),(3,'208360632','BARRANTES BOGANTES ANTONY','abarrantes60632@ufide.ac.cr','123',_binary '',1),(4,'207960874','BRANDON JOSUE CORELLA SANCHEZ','bcorella60874@ufide.ac.cr','Saprissa',_binary '',2);
 /*!40000 ALTER TABLE `tbusuario` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'mn_bd'
---
 
 --
 -- Dumping routines for database 'mn_bd'
@@ -188,6 +184,66 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `ActualizarProducto` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ActualizarProducto`(
+	pConsecutivoProducto int(11), 
+	pNombre varchar(100),
+    pDescripcion varchar(2000),
+    pPrecio decimal(10,2),
+    pImagen varchar(250)
+)
+BEGIN
+
+	UPDATE 	tbproducto
+	SET		Nombre = pNombre,
+			Descripcion = pDescripcion,
+            Precio = pPrecio,
+            Imagen = (CASE WHEN pImagen = '' THEN Imagen ELSE pImagen END)
+    WHERE	ConsecutivoProducto = pConsecutivoProducto;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `ConsultarProducto` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarProducto`(pConsecutivoProducto INT(11))
+BEGIN
+
+	SELECT  ConsecutivoProducto,
+			Nombre,
+			Descripcion,
+			Precio,
+			Estado,
+			Imagen
+	FROM 	tbproducto
+    WHERE	ConsecutivoProducto = pConsecutivoProducto;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `ConsultarProductos` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -206,6 +262,7 @@ BEGIN
 			Descripcion,
 			Precio,
 			Estado,
+            CASE WHEN Estado = 1 THEN 'Activo' ELSE 'Inactivo' END 'EstadoDescripcion',
 			Imagen
 	FROM 	tbproducto;
 
@@ -377,4 +434,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-10-29 21:04:30
+-- Dump completed on 2025-11-05 21:08:14
