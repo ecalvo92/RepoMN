@@ -41,7 +41,7 @@
                                             }
                                         ?>
 
-                                        <form id="formActualizarProducto" class="mb-3" action="" method="POST">
+                                        <form id="formActualizarProducto" class="mb-3" action="" method="POST" enctype="multipart/form-data">
 
                                             <input type="hidden" id="ConsecutivoProducto" name="ConsecutivoProducto" 
                                                 value="<?php echo $resultado["ConsecutivoProducto"]?>">
@@ -54,12 +54,12 @@
                                                 </div>
 
                                                 <div class="col-md-2 d-flex align-items-end">
-                                                    <img src="<?php echo $resultado['Imagen']; ?>" alt="Imagen" width="75" height="75" />
+                                                    <img src="<?php echo $resultado['Imagen']; ?>" width="100" height="100" />
                                                 </div>
                                             </div>
 
                                             <div class="mb-3">
-                                                <label class="form-label">Descripcion</label>
+                                                <label class="form-label">Descripción</label>
                                                 <textarea class="form-control" id="Descripcion" name="Descripcion" rows="4"><?php echo $resultado["Descripcion"]?></textarea>
                                             </div>
 
@@ -76,8 +76,8 @@
                                             </div>
 
                                             <div class="d-flex justify-content-end">
-                                                <button class="btn btn-primary d-grid w-25" id="btnActualizarPerfil"
-                                                    name="btnActualizarPerfil" type="submit">Procesar</button>
+                                                <button class="btn btn-primary d-grid w-25" id="btnActualizarProducto"
+                                                    name="btnActualizarProducto" type="submit">Procesar</button>
                                             </div>
                                         </form>
 

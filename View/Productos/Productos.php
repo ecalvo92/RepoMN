@@ -61,8 +61,8 @@
                                                       echo "<td>" . $fila["ConsecutivoProducto"] . "</td>";
                                                       echo "<td>" . $fila["Nombre"] . "</td>";
                                                       echo "<td>" . $fila["Precio"] . "</td>";
-                                                      echo "<td>" . $fila["Estado"] . "</td>";
-                                                      echo "<td>" . $fila["Imagen"] . "</td>";
+                                                      echo "<td>" . $fila["EstadoDescripcion"] . "</td>";
+                                                      echo "<td><img src=" . $fila["Imagen"] . " width='85' height='85'></td>";
                                                       echo "<td><a href='ActualizarProducto.php?id=" . $fila["ConsecutivoProducto"] . "'> Actualizar </td>";
                                                       echo "</tr>";
                                                   }

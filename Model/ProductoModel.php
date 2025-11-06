@@ -53,4 +53,24 @@
         }
     }
 
+    function ActualizarProductoModel($consecutivoProducto,$nombre,$descripcion,$precio,$imagen)
+    {
+        try
+        {
+            $context = OpenConnection();
+
+            $sentencia = "CALL ActualizarProducto('$consecutivoProducto', '$nombre', '$descripcion', '$precio', '$imagen')";
+            $resultado = $context -> query($sentencia);
+
+            CloseConnection($context);
+
+            return $resultado;
+        }
+        catch(Exception $error)
+        {
+            SaveError($error);
+            return false;
+        }
+    }   
+
 ?>
