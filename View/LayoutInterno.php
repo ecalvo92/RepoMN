@@ -1,8 +1,15 @@
 <?php
+    include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/Controller/InicioController.php';
 
     if(session_status() == PHP_SESSION_NONE)
     {
         session_start();
+    }
+
+    if(!isset($_SESSION["Nombre"]))
+    {
+      header("Location: ../../View/Inicio/IniciarSesion.php");
+      exit;
     }
 
     function ShowCSS()
@@ -137,10 +144,14 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="auth-login-basic.html">
-                        <i class="bx bx-power-off me-2"></i>
-                        <span class="align-middle">Cerrar Sesión</span>
-                      </a>
+
+                      <form action="" method="POST">
+                        <button type="submit" class="dropdown-item" id="btnSalir" name="btnSalir">
+                          <i class="bx bx-power-off me-2"></i>
+                          <span class="align-middle">Cerrar Sesión</span>
+                        </button>
+                      </form>
+
                     </li>
                   </ul>
                 </li>
@@ -166,3 +177,11 @@
     }
 
 ?>
+
+<script>
+  window.addEventListener("pageshow", function (event) {
+    if (event.persisted || performance.getEntriesByType("navigation")[0].type === "back_forward") {
+      window.location.reload(true);
+    }
+  });
+</script>
