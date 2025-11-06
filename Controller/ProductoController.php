@@ -6,4 +6,10 @@
         return ConsultarProductosModel();
     }
 
+    function ConsultarProducto($id)
+    {
+        return ConsultarProductoModel($id);
+    }
+    
+
 ?>

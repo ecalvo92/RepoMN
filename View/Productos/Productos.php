@@ -49,6 +49,7 @@
                                                     <th>Precio</th>
                                                     <th>Estado</th>
                                                     <th>Imagen</th>
+                                                    <th>Acciones</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -62,6 +63,7 @@
                                                       echo "<td>" . $fila["Precio"] . "</td>";
                                                       echo "<td>" . $fila["Estado"] . "</td>";
                                                       echo "<td>" . $fila["Imagen"] . "</td>";
+                                                      echo "<td><a href='ActualizarProducto.php?id=" . $fila["ConsecutivoProducto"] . "'> Actualizar </td>";
                                                       echo "</tr>";
                                                   }
                                                 ?>
