@@ -39,8 +39,7 @@
                                             }
                                         ?>
 
-                                        <form id="formAgregarProducto" class="mb-3" action="" method="POST"
-                                            enctype="multipart/form-data">
+                                        <form id="formAgregarProducto" class="mb-3" action="" method="POST" enctype="multipart/form-data">
 
                                             <div class="mb-3">
                                                 <label class="form-label">Nombre</label>

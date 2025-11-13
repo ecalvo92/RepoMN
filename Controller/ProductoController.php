@@ -40,4 +40,45 @@
         }        
     }
 
+    if(isset($_POST["btnAgregarProducto"]))
+    {
+        $nombre = $_POST["Nombre"];
+        $descripcion = $_POST["Descripcion"];
+        $precio = $_POST["Precio"];
+        $imagen = '../img/' . $_FILES["ImagenProducto"]["name"];
+        
+        $origen = $_FILES["ImagenProducto"]["tmp_name"];
+        $destino = $_SERVER["DOCUMENT_ROOT"] . '/RepoMN/View/img/' . $_FILES["ImagenProducto"]["name"];
+        copy($origen,$destino);      
+
+        $resultado = AgregarProductoModel($nombre,$descripcion,$precio,$imagen);
+
+        if($resultado)
+        {
+            header("Location: ../../View/Productos/Productos.php");
+            exit;
+        }
+        else
+        {
+            $_POST["Mensaje"] = "La información no se registró correctamente";
+        }        
+    }    
+
+    if(isset($_POST["btnCambiarEstado"]))
+    {
+        $consecutivoProducto = $_POST["ConsecutivoProducto"];
+        
+        $resultado = CambiarEstadoProductoModel($consecutivoProducto);
+
+        if($resultado)
+        {
+            header("Location: ../../View/Productos/Productos.php");
+            exit;
+        }
+        else
+        {
+            $_POST["Mensaje"] = "La información no se actualizó correctamente";
+        }        
+    }      
+
 ?>

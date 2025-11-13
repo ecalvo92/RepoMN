@@ -73,4 +73,44 @@
         }
     }   
 
+    function AgregarProductoModel($nombre,$descripcion,$precio,$imagen)
+    {
+        try
+        {
+            $context = OpenConnection();
+
+            $sentencia = "CALL AgregarProducto('$nombre', '$descripcion', '$precio', '$imagen')";
+            $resultado = $context -> query($sentencia);
+
+            CloseConnection($context);
+
+            return $resultado;
+        }
+        catch(Exception $error)
+        {
+            SaveError($error);
+            return false;
+        }
+    } 
+
+    function CambiarEstadoProductoModel($consecutivoProducto)
+    {
+        try
+        {
+            $context = OpenConnection();
+
+            $sentencia = "CALL CambiarEstadoProducto('$consecutivoProducto')";
+            $resultado = $context -> query($sentencia);
+
+            CloseConnection($context);
+
+            return $resultado;
+        }
+        catch(Exception $error)
+        {
+            SaveError($error);
+            return false;
+        }
+    } 
+
 ?>
