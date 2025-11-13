@@ -50,10 +50,17 @@
 
     function ShowMenu()
     {
+        $perfil = "";
+
+        if(isset($_SESSION["Nombre"]))
+        {
+          $perfil = $_SESSION["ConsecutivoPerfil"];
+        }
+
         echo '
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link">
+            <a href="../Inicio/Principal.php" class="app-brand-link">
               <img src="../img/logo.png">
               <span class="app-brand-text demo menu-text fw-bolder ms-2">MN Web</span>
             </a>
@@ -65,18 +72,34 @@
 
           <div class="menu-inner-shadow"></div>
 
-          <ul class="menu-inner py-1">
+          <ul class="menu-inner py-1">';
 
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">Mantenimientos</span></li>
+            if($perfil == "1")
+            {
+              echo '
+                <li class="menu-header small text-uppercase"><span class="menu-header-text">Mantenimientos</span></li>
 
-            <li class="menu-item">
-              <a href="../Productos/Productos.php" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-box"></i>
-                <div data-i18n="Analytics">Productos</div>
-              </a>
-            </li>
+                <li class="menu-item">
+                  <a href="../Productos/Productos.php" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-box"></i>
+                    <div data-i18n="Analytics">Productos</div>
+                  </a>
+                </li>';
+            }
+            else
+            {
+               echo '
+                <li class="menu-header small text-uppercase"><span class="menu-header-text">Compras</span></li>
 
-          </ul>
+                <li class="menu-item">
+                  <a href="../Carrito/MiCarrito.php" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-box"></i>
+                    <div data-i18n="Analytics">Mi Carrito</div>
+                  </a>
+                </li>';
+            }
+
+          echo '</ul>
         </aside>';
     }
 
@@ -108,7 +131,7 @@
                   <input
                     type="text"
                     class="form-control border-0 shadow-none"
-                    placeholder="Search..."
+                    placeholder="Buscar..."
                     aria-label="Search..."
                   />
                 </div>

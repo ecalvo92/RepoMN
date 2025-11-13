@@ -13,6 +13,9 @@ $(function () {
                number: true,
                min: 0.01
             },
+            Cantidad:{
+               required: true,
+            },
             ImagenProducto: {
                 extension: "png",
                 filesize: 2 * 1024 * 1024
@@ -29,6 +32,9 @@ $(function () {
                 required: "* Requerido",
                 number: "* Solo números válidos.",
                 min: "* Debe ser mayor que 0."
+            },
+            Cantidad:{
+               required: "* Requerido",
             },
             ImagenProducto: {
                 extension: "* Solo se permiten formatos PNG.",

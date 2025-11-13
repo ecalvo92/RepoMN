@@ -52,6 +52,7 @@
                                                     <th>#</th>
                                                     <th>Nombre</th>
                                                     <th>Precio</th>
+                                                    <th>Cantidad</th>
                                                     <th>Estado</th>
                                                     <th>Imagen</th>
                                                     <th>Acciones</th>
@@ -59,38 +60,40 @@
                                             </thead>
                                             <tbody>
 
-                                                <?php
-                                                  foreach ($resultado as $fila) {
-                                                    echo "<tr>";
-                                                    echo "<td>" . $fila["ConsecutivoProducto"] . "</td>";
-                                                    echo "<td>" . $fila["Nombre"] . "</td>";
-                                                    echo "<td>$" . $fila["Precio"] . "</td>";
-                                                    echo "<td>" . $fila["EstadoDescripcion"] . "</td>";
-                                                    echo "<td><img src='" . $fila["Imagen"] . "' width='85' height='85'></td>";
+                                                <?php foreach ($resultado as $fila): ?>
+                                                <tr>
+                                                    <td><?= $fila['ConsecutivoProducto'] ?></td>
+                                                    <td><?= htmlspecialchars($fila['Nombre']) ?></td>
+                                                    <td>$<?= number_format($fila['Precio'], 2) ?></td>
+                                                    <td><?= $fila['Cantidad'] ?></td>
+                                                    <td><?= htmlspecialchars($fila['EstadoDescripcion']) ?></td>
+                                                    <td>
+                                                        <img src="<?= htmlspecialchars($fila['Imagen']) ?>" width="85"
+                                                            height="85" alt="<?= htmlspecialchars($fila['Nombre']) ?>">
+                                                    </td>
+                                                    <td>
+                                                        <div style="display:flex; align-items:center; gap:10px;">
+                                                            <!-- Enlace para editar -->
+                                                            <a
+                                                                href="ActualizarProducto.php?id=<?= $fila['ConsecutivoProducto'] ?>">
+                                                                <i class="fa fa-edit" style="font-size:22px;"></i>
+                                                            </a>
 
-                                                    echo "
-                                                        <td>
-                                                            <div style='display:flex; align-items:center; gap:10px;'>
-                                                                <!-- Enlace para editar -->
-                                                                <a href='ActualizarProducto.php?id=" . $fila["ConsecutivoProducto"] . "'> 
-                                                                    <i class='fa fa-edit' style='font-size:22px;'></i>
-                                                                </a> 
-                                                                
-                                                                <!-- Formulario para cambiar estado -->
-                                                                <form method='POST' action='' style='margin:0; display:inline;'>
-                                                                    <input type='hidden' name='ConsecutivoProducto' value='" . $fila['ConsecutivoProducto'] . "'>
-                                                                    <button type='submit' name='btnCambiarEstado' 
-                                                                            style='background:none; border:none; color:#0d6efd; cursor:pointer; padding:0;'>
-                                                                        <i class='fa fa-refresh' style='font-size:22px;'></i>
-                                                                    </button>
-                                                                </form>
-                                                            </div>
-                                                        </td>
-                                                    ";
-
-                                                    echo "</tr>";
-                                                }
-                                                ?>
+                                                            <!-- Formulario para cambiar estado -->
+                                                            <form method="POST" action=""
+                                                                style="margin:0; display:inline;">
+                                                                <input type="hidden" name="ConsecutivoProducto"
+                                                                    value="<?= $fila['ConsecutivoProducto'] ?>">
+                                                                <button type="submit" name="btnCambiarEstado"
+                                                                    style="background:none; border:none; color:#0d6efd; cursor:pointer; padding:0;">
+                                                                    <i class="fa fa-refresh"
+                                                                        style="font-size:22px;"></i>
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <?php endforeach; ?>
 
                                             </tbody>
                                         </table>

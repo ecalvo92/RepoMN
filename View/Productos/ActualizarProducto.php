@@ -69,6 +69,12 @@
                                                     name="Precio" value="<?php echo $resultado["Precio"]?>" />
                                             </div>
 
+                                            <div class="mb-3">
+                                                <label class="form-label">Cantidad</label>
+                                                <input type="text" class="form-control" id="Cantidad"
+                                                    name="Cantidad" value="<?php echo $resultado["Cantidad"]?>" />
+                                            </div>
+
                                             <div class="mb-3 form-password-toggle">
                                                 <label>Imagen</label>
                                                 <input type="file" class="form-control" id="ImagenProducto"

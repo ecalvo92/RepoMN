@@ -6,6 +6,11 @@
         return ConsultarProductosModel();
     }
 
+    function ConsultarProductosPrincipal()
+    {
+        return ConsultarProductosPrincipalModel();
+    }  
+
     function ConsultarProducto($id)
     {
         return ConsultarProductoModel($id);
@@ -17,6 +22,7 @@
         $nombre = $_POST["Nombre"];
         $descripcion = $_POST["Descripcion"];
         $precio = $_POST["Precio"];
+        $cantidad = $_POST["Cantidad"];
         $imagen = '';
 
         if($_FILES["ImagenProducto"]["name"] != "")
@@ -27,7 +33,7 @@
             copy($origen,$destino);
         }       
 
-        $resultado = ActualizarProductoModel($consecutivoProducto,$nombre,$descripcion,$precio,$imagen);
+        $resultado = ActualizarProductoModel($consecutivoProducto,$nombre,$descripcion,$precio,$imagen,$cantidad);
 
         if($resultado)
         {
@@ -45,13 +51,14 @@
         $nombre = $_POST["Nombre"];
         $descripcion = $_POST["Descripcion"];
         $precio = $_POST["Precio"];
+        $cantidad = $_POST["Cantidad"];
         $imagen = '../img/' . $_FILES["ImagenProducto"]["name"];
         
         $origen = $_FILES["ImagenProducto"]["tmp_name"];
         $destino = $_SERVER["DOCUMENT_ROOT"] . '/RepoMN/View/img/' . $_FILES["ImagenProducto"]["name"];
         copy($origen,$destino);      
 
-        $resultado = AgregarProductoModel($nombre,$descripcion,$precio,$imagen);
+        $resultado = AgregarProductoModel($nombre,$descripcion,$precio,$imagen,$cantidad);
 
         if($resultado)
         {

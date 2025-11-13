@@ -36,6 +36,7 @@
         {
             $_SESSION["ConsecutivoUsuario"] = $resultado["ConsecutivoUsuario"];
             $_SESSION["Nombre"] = $resultado["Nombre"];
+            $_SESSION["ConsecutivoPerfil"] = $resultado["ConsecutivoPerfil"];
             $_SESSION["NombrePerfil"] = $resultado["NombrePerfil"];
 
             header("Location: ../../View/Inicio/Principal.php");
@@ -85,5 +86,11 @@
         header("Location: ../../View/Inicio/IniciarSesion.php");
         exit;
     }
+
+    function ConsultarIndicadores()
+    {
+        return ConsultarIndicadoresModel();
+    }
+    
 
 ?>

@@ -13,6 +13,9 @@ $(function () {
                number: true,
                min: 0.01
             },
+            Cantidad:{
+                required: true
+            },
             ImagenProducto: {
                 required: true,
                 extension: "png",
@@ -30,6 +33,9 @@ $(function () {
                 required: "* Requerido",
                 number: "* Solo números válidos.",
                 min: "* Debe ser mayor que 0."
+            },
+             Cantidad:{
+                required: "* Requerido"
             },
             ImagenProducto: {
                 required: "* Requerido",
