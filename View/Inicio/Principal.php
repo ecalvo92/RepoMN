@@ -1,6 +1,7 @@
 <?php
   include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/View/LayoutInterno.php';
   include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/Controller/ProductoController.php';
+  include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/Controller/CarritoController.php';
 
   if($_SESSION["ConsecutivoPerfil"] == "1")
   {
@@ -52,16 +53,19 @@
                                                 </p>
                                             </div>
 
-                                            <form method="POST" action="AgregarCarrito.php"
-                                                class="mt-2 d-flex align-items-center gap-2">
-                                                <input type="hidden" name="ConsecutivoProducto"
+                                            <form method="POST" action="" class="mt-2 d-flex align-items-center gap-2">
+                                                
+                                                <input type="hidden" id="ConsecutivoProducto" name="ConsecutivoProducto"
                                                     value="<?= $fila['ConsecutivoProducto'] ?>">
-                                                <input type="number" name="Cantidad" class="form-control" min="1"
-                                                    value="1" style="max-width:80px;">
-                                                <button type="submit" class="btn btn-primary flex-grow-1">
+
+                                                <input type="text" id="Cantidad" name="Cantidad" class="form-control" value="1" style="max-width:80px;">
+
+                                                <button type="submit" id="btnAgregarProductoCarrito" name="btnAgregarProductoCarrito" class="btn btn-primary flex-grow-1">
                                                     <i class="fa fa-cart-plus me-1"></i> Agregar
                                                 </button>
+
                                             </form>
+
                                         </div>
                                     </div>
                                 </div>
