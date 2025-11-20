@@ -107,11 +107,15 @@
     {
         $nombre = "";
         $nombrePerfil = "";
+        $cantidad = "0";
+        $total = "0.00";
 
         if(isset($_SESSION["Nombre"]))
         {
           $nombre = $_SESSION["Nombre"];
           $nombrePerfil = $_SESSION["NombrePerfil"];
+          $cantidad = $_SESSION["Cantidad"];
+          $total = number_format($_SESSION["Total"],2);
         }
 
         echo '
@@ -125,7 +129,8 @@
             </div>
 
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-              <div class="navbar-nav align-items-center">
+              
+            <div class="navbar-nav align-items-center">
                 <div class="nav-item d-flex align-items-center">
                   <i class="bx bx-search fs-4 lh-0"></i>
                   <input
@@ -135,9 +140,14 @@
                     aria-label="Search..."
                   />
                 </div>
-              </div>
+              </div>';
 
-              <ul class="navbar-nav flex-row align-items-center ms-auto">
+              echo '
+                <i class="fa fa-tags me-3"></i>' . $cantidad . '
+                <i class="fa fa-shopping-cart me-3 ms-3"></i>' . $total . ' IVI
+                ';
+
+              echo '<ul class="navbar-nav flex-row align-items-center ms-auto">
                 
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">' . $nombre . '

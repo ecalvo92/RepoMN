@@ -3,6 +3,8 @@
   include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/Controller/ProductoController.php';
   include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/Controller/CarritoController.php';
 
+  ConsultarResumenCarritos();
+
   if($_SESSION["ConsecutivoPerfil"] == "1")
   {
     header("Location: PrincipalAdmin.php");

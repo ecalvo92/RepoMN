@@ -23,6 +23,21 @@
         {
             $_POST["Mensaje"] = "La información no se agregó correctamente";
         }        
-    }      
+    }     
+    
+    function ConsultarCarritos()
+    {
+        $consecutivoUsuario = $_SESSION["ConsecutivoUsuario"];
+        return ConsultarCarritosModel($consecutivoUsuario);
+    }
+
+    function ConsultarResumenCarritos()
+    {
+        $consecutivoUsuario = $_SESSION["ConsecutivoUsuario"];
+        $resultado = ConsultarResumenCarritosModel($consecutivoUsuario);
+
+        $_SESSION["Cantidad"] = $resultado["Cantidad"];
+        $_SESSION["Total"] = $resultado["Total"];
+    }   
 
 ?>

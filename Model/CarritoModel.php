@@ -21,4 +21,60 @@
         }
     } 
 
+    function ConsultarCarritosModel($consecutivoUsuario)
+    {
+        try
+        {
+            $context = OpenConnection();
+
+            $sentencia = "CALL ConsultarCarritos('$consecutivoUsuario')";
+            $resultado = $context -> query($sentencia);
+
+            $datos = [];
+            while ($row = $resultado->fetch_assoc()) {
+                $datos[] = $row;
+            }
+
+            $resultado->free();
+            CloseConnection($context);
+
+            return $datos;
+        }
+        catch(Exception $error)
+        {
+            SaveError($error);
+            return null;
+        }
+    }
+
+    function ConsultarResumenCarritosModel($consecutivoUsuario)
+    {
+        try
+        {
+            $context = OpenConnection();
+
+            $sentencia = "CALL ConsultarResumenCarritos('$consecutivoUsuario')";
+            $resultado = $context -> query($sentencia);
+
+            $datos = null;
+            while ($row = $resultado->fetch_assoc()) {
+                $datos = $row;
+            }
+
+            $resultado->free();
+            CloseConnection($context);
+
+            return $datos;
+        }
+        catch(Exception $error)
+        {
+            SaveError($error);
+            return null;
+        }
+    }
+
+    
+
+    
+
 ?>
