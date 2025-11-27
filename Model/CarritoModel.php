@@ -21,6 +21,26 @@
         }
     } 
 
+    function RemoverProductoCarritoModel($consecutivoProducto,$consecutivoUsuario)
+    {
+        try
+        {
+            $context = OpenConnection();
+
+            $sentencia = "CALL RemoverProductoCarrito('$consecutivoProducto','$consecutivoUsuario')";
+            $resultado = $context -> query($sentencia);
+
+            CloseConnection($context);
+
+            return $resultado;
+        }
+        catch(Exception $error)
+        {
+            SaveError($error);
+            return false;
+        }
+    }
+
     function ConsultarCarritosModel($consecutivoUsuario)
     {
         try

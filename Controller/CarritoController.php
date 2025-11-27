@@ -23,7 +23,26 @@
         {
             $_POST["Mensaje"] = "La información no se agregó correctamente";
         }        
-    }     
+    } 
+
+    if(isset($_POST["btnRemoverProductoCarrito"]))
+    {
+        $consecutivoProducto = $_POST["ConsecutivoProducto"];
+        $consecutivoUsuario = $_SESSION["ConsecutivoUsuario"];
+        
+        $resultado = RemoverProductoCarritoModel($consecutivoProducto, $consecutivoUsuario);
+
+        if($resultado)
+        {
+            ConsultarResumenCarritos();
+            header("Location: ../../View/Carrito/MiCarrito.php");
+            exit;
+        }
+        else
+        {
+            $_POST["Mensaje"] = "La información no se removió correctamente";
+        }        
+    } 
     
     function ConsultarCarritos()
     {
