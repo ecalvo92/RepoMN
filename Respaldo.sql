@@ -33,9 +33,10 @@ CREATE TABLE `tbcarrito` (
   PRIMARY KEY (`ConsecutivoCarrito`),
   KEY `FK_CarritoProducto` (`ConsecutivoProducto`),
   KEY `FK_CarritoUsuario` (`ConsecutivoUsuario`),
+  KEY `idx_ConsecutivoUsuario` (`ConsecutivoUsuario`),
   CONSTRAINT `FK_CarritoProducto` FOREIGN KEY (`ConsecutivoProducto`) REFERENCES `tbproducto` (`ConsecutivoProducto`),
   CONSTRAINT `FK_CarritoUsuario` FOREIGN KEY (`ConsecutivoUsuario`) REFERENCES `tbusuario` (`ConsecutivoUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,8 +45,41 @@ CREATE TABLE `tbcarrito` (
 
 LOCK TABLES `tbcarrito` WRITE;
 /*!40000 ALTER TABLE `tbcarrito` DISABLE KEYS */;
-INSERT INTO `tbcarrito` VALUES (1,7,4,'2025-11-19 20:46:02',2),(2,5,4,'2025-11-19 20:45:56',2),(3,6,4,'2025-11-19 20:46:00',2),(4,8,4,'2025-11-19 20:46:03',2),(5,6,2,'2025-11-19 20:47:37',100),(6,5,2,'2025-11-19 20:47:50',1);
 /*!40000 ALTER TABLE `tbcarrito` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbdetalle`
+--
+
+DROP TABLE IF EXISTS `tbdetalle`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbdetalle` (
+  `ConsecutivoDetalle` int(11) NOT NULL AUTO_INCREMENT,
+  `ConsecutivoFactura` int(11) NOT NULL,
+  `ConsecutivoProducto` int(11) NOT NULL,
+  `Cantidad` int(11) NOT NULL,
+  `Precio` decimal(10,2) NOT NULL,
+  `SubTotal` decimal(10,2) NOT NULL,
+  `Impuesto` decimal(10,2) NOT NULL,
+  `Total` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`ConsecutivoDetalle`),
+  KEY `FK_DetalleFactura` (`ConsecutivoFactura`),
+  KEY `FK_DetalleProducto` (`ConsecutivoProducto`),
+  CONSTRAINT `FK_DetalleFactura` FOREIGN KEY (`ConsecutivoFactura`) REFERENCES `tbfactura` (`ConsecutivoFactura`),
+  CONSTRAINT `FK_DetalleProducto` FOREIGN KEY (`ConsecutivoProducto`) REFERENCES `tbproducto` (`ConsecutivoProducto`)
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbdetalle`
+--
+
+LOCK TABLES `tbdetalle` WRITE;
+/*!40000 ALTER TABLE `tbdetalle` DISABLE KEYS */;
+INSERT INTO `tbdetalle` VALUES (1,1,5,1,8.00,8.00,1.04,9.04),(2,1,6,2,4.00,8.00,1.04,9.04),(3,1,7,3,6.00,18.00,2.34,20.34),(4,1,8,4,25.00,100.00,13.00,113.00),(64,10,7,3,6.00,18.00,2.34,20.34),(65,10,8,1,25.00,25.00,3.25,28.25);
+/*!40000 ALTER TABLE `tbdetalle` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -71,6 +105,36 @@ LOCK TABLES `tberror` WRITE;
 /*!40000 ALTER TABLE `tberror` DISABLE KEYS */;
 INSERT INTO `tberror` VALUES (2,'PROCEDURE mn_bd.CrearCuent does not exist','2025-10-08 20:12:33'),(3,'Unknown column \'CorreoElectronico\' in \'field list\'','2025-10-08 20:14:38'),(4,'PROCEDURE mn_bd.ActualizarProducto does not exist','2025-11-05 20:25:22'),(5,'PROCEDURE mn_bd.ActualizarProducto does not exist','2025-11-05 20:26:18'),(6,'PROCEDURE mn_bd.ActualizarProducto does not exist','2025-11-05 20:28:44'),(7,'Incorrect number of arguments for PROCEDURE mn_bd.ConsultarProducto; expected 1, got 0','2025-11-05 20:56:51'),(8,'Ya existe un usuario con esa identificación o correo electrónico.','2025-11-12 18:29:12'),(9,'Ya existe un producto con ese nombre.','2025-11-12 18:43:49'),(10,'Table \'mn_bd.tproducto\' doesn\'t exist','2025-11-12 20:48:19');
 /*!40000 ALTER TABLE `tberror` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbfactura`
+--
+
+DROP TABLE IF EXISTS `tbfactura`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbfactura` (
+  `ConsecutivoFactura` int(11) NOT NULL AUTO_INCREMENT,
+  `Fecha` datetime NOT NULL,
+  `ConsecutivoUsuario` int(11) NOT NULL,
+  `CantidadUnidades` int(11) NOT NULL,
+  `TotalUnidades` decimal(10,2) NOT NULL,
+  `MedioPago` varchar(50) NOT NULL,
+  PRIMARY KEY (`ConsecutivoFactura`),
+  KEY `FK_FacturaUsuario` (`ConsecutivoUsuario`),
+  CONSTRAINT `FK_FacturaUsuario` FOREIGN KEY (`ConsecutivoUsuario`) REFERENCES `tbusuario` (`ConsecutivoUsuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbfactura`
+--
+
+LOCK TABLES `tbfactura` WRITE;
+/*!40000 ALTER TABLE `tbfactura` DISABLE KEYS */;
+INSERT INTO `tbfactura` VALUES (1,'2025-11-26 20:37:10',4,10,151.42,'SINPE MOVIL'),(10,'2025-11-26 20:49:14',2,4,48.59,'EFECTIVO');
+/*!40000 ALTER TABLE `tbfactura` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -122,7 +186,7 @@ CREATE TABLE `tbproducto` (
 
 LOCK TABLES `tbproducto` WRITE;
 /*!40000 ALTER TABLE `tbproducto` DISABLE KEYS */;
-INSERT INTO `tbproducto` VALUES (5,'Caja grande - fresas de temporada','Las fresas son frutas pequeñas, rojas y dulces, con una textura jugosa y un aroma característico. Pertenecen al género Fragaria y se cultivan ampliamente en climas templados. Son ricas en vitamina C, antioxidantes y fibra, lo que las hace nutritivas y saludables. Se consumen frescas, en postres, batidos, mermeladas o como ingrediente en muchas preparaciones.',8.00,_binary '','../img/2.png',80),(6,'Caja pequeña - fresas de temporada','Las fresas son frutas pequeñas, rojas y dulces, con una textura jugosa y un aroma característico. Pertenecen al género Fragaria y se cultivan ampliamente en climas templados. Son ricas en vitamina C, antioxidantes y fibra, lo que las hace nutritivas y saludables. Se consumen frescas, en postres, batidos, mermeladas o como ingrediente en muchas preparaciones.',4.00,_binary '','../img/2.png',40),(7,'Caja mediana - fresas de temporada','¿Quieres que te muestre una comparación visual (pequeño ejemplo en HTML con las 5 imágenes lado a lado)? Puedo generarte el snippet para probarlo rápidamente.',6.00,_binary '','../img/2.png',6),(8,'fresas de importación','fresas de importación',25.00,_binary '','../img/2.png',25);
+INSERT INTO `tbproducto` VALUES (5,'Caja grande - fresas de temporada','Las fresas son frutas pequeñas, rojas y dulces, con una textura jugosa y un aroma característico. Pertenecen al género Fragaria y se cultivan ampliamente en climas templados. Son ricas en vitamina C, antioxidantes y fibra, lo que las hace nutritivas y saludables. Se consumen frescas, en postres, batidos, mermeladas o como ingrediente en muchas preparaciones.',8.00,_binary '','../img/2.png',79),(6,'Caja pequeña - fresas de temporada','Las fresas son frutas pequeñas, rojas y dulces, con una textura jugosa y un aroma característico. Pertenecen al género Fragaria y se cultivan ampliamente en climas templados. Son ricas en vitamina C, antioxidantes y fibra, lo que las hace nutritivas y saludables. Se consumen frescas, en postres, batidos, mermeladas o como ingrediente en muchas preparaciones.',4.00,_binary '','../img/2.png',38),(7,'Caja mediana - fresas de temporada','¿Quieres que te muestre una comparación visual (pequeño ejemplo en HTML con las 5 imágenes lado a lado)? Puedo generarte el snippet para probarlo rápidamente.',6.00,_binary '','../img/2.png',0),(8,'fresas de importación','fresas de importación',25.00,_binary '','../img/2.png',20);
 /*!40000 ALTER TABLE `tbproducto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -557,6 +621,62 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `RealizarPagoCarrito` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RealizarPagoCarrito`(pConsecutivoUsuario INT, pMedioPago VARCHAR(50))
+BEGIN
+
+	/*1*/
+    INSERT INTO tbfactura(Fecha,ConsecutivoUsuario,CantidadUnidades,TotalUnidades,MedioPago)
+	SELECT	NOW(),
+			C.ConsecutivoUsuario,
+            SUM(C.Cantidad),
+            SUM(C.Cantidad * P.Precio) * 1.13,
+            pMedioPago
+    FROM 	tbCarrito C
+    INNER   JOIN tbProducto P ON C.ConsecutivoProducto = P.ConsecutivoProducto
+    WHERE	ConsecutivoUsuario = pConsecutivoUsuario
+    GROUP   BY C.ConsecutivoUsuario;
+
+    /*2*/
+    INSERT INTO tbdetalle(ConsecutivoFactura,ConsecutivoProducto,Cantidad,Precio,SubTotal,Impuesto,Total)
+	SELECT	LAST_INSERT_ID(),
+			C.ConsecutivoProducto,
+            C.Cantidad,
+            P.Precio,
+            C.Cantidad * P.Precio,
+            (C.Cantidad * P.Precio) * 0.13,
+            (C.Cantidad * P.Precio) * 1.13
+    FROM 	tbCarrito C
+    INNER   JOIN tbProducto P ON C.ConsecutivoProducto = P.ConsecutivoProducto
+    WHERE	ConsecutivoUsuario = pConsecutivoUsuario;
+
+    
+    /*3*/
+    UPDATE 	tbProducto P
+    INNER 	JOIN tbCarrito C ON C.ConsecutivoProducto = P.ConsecutivoProducto
+    SET		P.Cantidad = P.Cantidad - C.Cantidad
+    WHERE	ConsecutivoUsuario = pConsecutivoUsuario;
+    
+    
+	/*4*/
+    DELETE 	FROM	tbCarrito
+    WHERE	ConsecutivoUsuario = pConsecutivoUsuario;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `RegistrarCarrito` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -618,6 +738,32 @@ BEGIN
 
 	INSERT INTO tberror (Mensaje,FechaHora)
 	VALUES (pMensaje, NOW());
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `RemoverProductoCarrito` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RemoverProductoCarrito`(
+    pConsecutivoProducto INT,
+    pConsecutivoUsuario INT
+)
+BEGIN
+      
+	DELETE FROM tbcarrito
+    WHERE 	ConsecutivoProducto = pConsecutivoProducto
+		AND	ConsecutivoUsuario = pConsecutivoUsuario;
 
 END ;;
 DELIMITER ;
@@ -703,4 +849,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-11-19 20:52:33
+-- Dump completed on 2025-11-26 20:52:53
