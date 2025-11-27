@@ -28,6 +28,8 @@
           <link rel="stylesheet" href="../css/perfect-scrollbar.css" />
           <link rel="stylesheet" href="https://cdn.datatables.net/2.3.4/css/dataTables.bootstrap5.css" />
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-5/bootstrap-5.min.css">
+          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
           <script src="../js/helpers.js"></script>
           <script src="../js/config.js"></script>
         </head>';
@@ -128,23 +130,11 @@
               </a>
             </div>
 
-            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-              
-            <div class="navbar-nav align-items-center">
-                <div class="nav-item d-flex align-items-center">
-                  <i class="bx bx-search fs-4 lh-0"></i>
-                  <input
-                    type="text"
-                    class="form-control border-0 shadow-none"
-                    placeholder="Buscar..."
-                    aria-label="Search..."
-                  />
-                </div>
-              </div>';
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">';
 
               echo '
                 <i class="fa fa-tags me-3"></i>' . $cantidad . '
-                <i class="fa fa-shopping-cart me-3 ms-3"></i>' . $total . ' IVI
+                <i class="fa fa-shopping-cart me-3 ms-3"></i>$' . $total . ' IVI
                 ';
 
               echo '<ul class="navbar-nav flex-row align-items-center ms-auto">

@@ -56,13 +56,20 @@
                                             </div>
 
                                             <form method="POST" action="" class="mt-2 d-flex align-items-center gap-2">
-                                                
+
                                                 <input type="hidden" id="ConsecutivoProducto" name="ConsecutivoProducto"
                                                     value="<?= $fila['ConsecutivoProducto'] ?>">
 
-                                                <input type="text" id="Cantidad" name="Cantidad" class="form-control" value="1" style="max-width:80px;">
+                                                <input type="hidden" id="Inventario<?= $fila['ConsecutivoProducto'] ?>" name="Inventario"
+                                                    value="<?= $fila['Cantidad'] ?>">
 
-                                                <button type="submit" id="btnAgregarProductoCarrito" name="btnAgregarProductoCarrito" class="btn btn-primary flex-grow-1">
+                                                <input type="text" id="Cantidad<?= $fila['ConsecutivoProducto'] ?>" name="Cantidad" class="form-control"
+                                                    value="1" style="max-width:80px; text-align:center;" onkeyup="soloNumerosASCII(this)" maxlength="2">
+
+                                                <button type="submit" id="btnAgregarProductoCarrito"
+                                                    name="btnAgregarProductoCarrito"
+                                                    onclick="return validarFormulario('<?= $fila['ConsecutivoProducto'] ?>')"
+                                                    class="btn btn-primary flex-grow-1">
                                                     <i class="fa fa-cart-plus me-1"></i> Agregar
                                                 </button>
 
@@ -90,6 +97,7 @@
     <?php
       ShowJS();
     ?>
+    <script src="../js/Principal.js"></script>
 
 </body>
 

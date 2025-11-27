@@ -68,7 +68,20 @@
                                                     <td>$ <?= number_format($fila['SubTotal'], 2) ?></td>
                                                     <td>$ <?= number_format($fila['Impuesto'], 2) ?></td>
                                                     <td>$ <?= number_format($fila['Total'], 2) ?></td>
-                                                    <td></td>
+                                                    <td>
+
+                                                        <form method="POST" action="" style="margin:0; display:inline;">
+                                                            <input type="hidden" name="ConsecutivoProducto"
+                                                                value="<?= $fila['ConsecutivoProducto'] ?>">
+
+                                                            <button type="submit" name="btnRemoverProductoCarrito"
+                                                                style="background:none; border:none; color:#0d6efd; cursor:pointer; padding:0;">
+                                                                <i class="fa fa-trash" style="font-size:22px;"></i>
+                                                            </button>
+
+                                                        </form>
+
+                                                    </td>
                                                 </tr>
                                                 <?php endforeach; ?>
 
