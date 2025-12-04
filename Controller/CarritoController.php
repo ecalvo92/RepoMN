@@ -57,6 +57,24 @@
 
         $_SESSION["Cantidad"] = $resultado["Cantidad"];
         $_SESSION["Total"] = $resultado["Total"];
-    }   
+    }  
+
+    if(isset($_POST["btnRealizarPagoCarrito"]))
+    {
+        $consecutivoUsuario = $_SESSION["ConsecutivoUsuario"];
+        $medioPago = $_POST["MedioPago"];
+        
+        $resultado = RealizarPagoCarritoModel($consecutivoUsuario, $medioPago);
+
+        if($resultado)
+        {
+            header("Location: ../../View/Inicio/Principal.php");
+            exit;
+        }
+        else
+        {
+            $_POST["Mensaje"] = "La transacción no se realizó correctamente";
+        }        
+    }
 
 ?>

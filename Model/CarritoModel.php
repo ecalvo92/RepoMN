@@ -93,8 +93,25 @@
         }
     }
 
-    
+    function RealizarPagoCarritoModel($consecutivoUsuario,$medioPago)
+    {
+        try
+        {
+            $context = OpenConnection();
 
+            $sentencia = "CALL RealizarPagoCarrito('$consecutivoUsuario','$medioPago')";
+            $resultado = $context -> query($sentencia);
+
+            CloseConnection($context);
+
+            return $resultado;
+        }
+        catch(Exception $error)
+        {
+            SaveError($error);
+            return false;
+        }
+    }
     
 
 ?>
