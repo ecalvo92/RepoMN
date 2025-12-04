@@ -27,6 +27,32 @@
         }
     }
 
+    function ConsultarUsuariosModel()
+    {
+        try
+        {
+            $context = OpenConnection();
+
+            $sentencia = "CALL ConsultarUsuarios()";
+            $resultado = $context -> query($sentencia);
+
+            $datos = [];
+            while ($row = $resultado->fetch_assoc()) {
+                $datos[] = $row;
+            }
+
+            $resultado->free();
+            CloseConnection($context);
+
+            return $datos;
+        }
+        catch(Exception $error)
+        {
+            SaveError($error);
+            return null;
+        }
+    }
+
     function ActualizarPerfilModel($consecutivo,$identificacion,$nombre,$correoElectronico)
     {
         try
@@ -66,5 +92,27 @@
             return false;
         }
     }
+
+    function CambiarEstadoUsuarioModel($consecutivoUsuario)
+    {
+        try
+        {
+            $context = OpenConnection();
+
+            $sentencia = "CALL CambiarEstadoUsuario('$consecutivoUsuario')";
+            $resultado = $context -> query($sentencia);
+
+            CloseConnection($context);
+
+            return $resultado;
+        }
+        catch(Exception $error)
+        {
+            SaveError($error);
+            return false;
+        }
+    } 
+
+    
 
 ?>

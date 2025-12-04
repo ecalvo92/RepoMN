@@ -82,6 +82,13 @@
                 <li class="menu-header small text-uppercase"><span class="menu-header-text">Mantenimientos</span></li>
 
                 <li class="menu-item">
+                  <a href="../Usuarios/Usuarios.php" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-box"></i>
+                    <div data-i18n="Analytics">Usuarios</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
                   <a href="../Productos/Productos.php" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-box"></i>
                     <div data-i18n="Analytics">Productos</div>
@@ -116,6 +123,7 @@
     {
         $nombre = "";
         $nombrePerfil = "";
+        $perfil = "";
         $cantidad = "0";
         $total = "0.00";
 
@@ -123,6 +131,7 @@
         {
           $nombre = $_SESSION["Nombre"];
           $nombrePerfil = $_SESSION["NombrePerfil"];
+          $perfil = $_SESSION["ConsecutivoPerfil"];
           $cantidad = $_SESSION["Cantidad"];
           $total = number_format($_SESSION["Total"],2);
         }
@@ -139,10 +148,13 @@
 
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">';
 
-              echo '
-                <i class="fa fa-tags me-3"></i>' . $cantidad . '
-                <i class="fa fa-shopping-cart me-3 ms-3"></i>$' . $total . ' IVI
-                ';
+              if($perfil != "1")
+              {
+                echo '
+                  <i class="fa fa-tags me-3"></i>' . $cantidad . '
+                  <i class="fa fa-shopping-cart me-3 ms-3"></i>$' . $total . ' IVI
+                  ';
+              }
 
               echo '<ul class="navbar-nav flex-row align-items-center ms-auto">
                 

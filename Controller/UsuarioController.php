@@ -12,6 +12,11 @@
         return ConsultarUsuarioModel($consecutivo);
     }
 
+    function ConsultarUsuarios()
+    {
+        return ConsultarUsuariosModel();
+    }
+
     if(isset($_POST["btnActualizarPerfil"]))
     {
         $consecutivo = $_SESSION["ConsecutivoUsuario"];
@@ -42,6 +47,23 @@
         if($resultado)
         {
             $_POST["Mensaje"] = "La información se actualizó correctamente";
+        }
+        else
+        {
+            $_POST["Mensaje"] = "La información no se actualizó correctamente";
+        }        
+    }   
+
+    if(isset($_POST["btnCambiarEstado"]))
+    {
+        $consecutivoUsuario = $_POST["ConsecutivoUsuario"];
+        
+        $resultado = CambiarEstadoUsuarioModel($consecutivoUsuario);
+
+        if($resultado)
+        {
+            header("Location: ../../View/Usuarios/Usuarios.php");
+            exit;
         }
         else
         {
