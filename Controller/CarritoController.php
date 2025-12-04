@@ -77,4 +77,19 @@
         }        
     }
 
+
+    function ConsultarCompras()
+    {
+        $consecutivoUsuario = $_SESSION["ConsecutivoUsuario"];
+        return ConsultarComprasModel($consecutivoUsuario);
+    }
+
+    function ConsultarDetalleCompras($consecutivoFactura)
+    {
+        return ConsultarDetalleComprasModel($consecutivoFactura);
+    }
+
+    
+    
+
 ?>

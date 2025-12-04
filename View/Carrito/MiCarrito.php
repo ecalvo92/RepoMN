@@ -88,16 +88,12 @@
                                             </tbody>
                                         </table>
 
-
                                         <div class="row mt-5">
-
-                                            <div class="col-3">
+                                            <div class="col-4">
                                                 <p class="mt-2">El monto a cancelar es de: <b>$
                                                         <?= number_format($_SESSION["Total"], 2)?> IVI</b></p>
                                             </div>
-                                            <div class="col-9">
-
-
+                                            <div class="col-8">
                                                 <?php
                                                     if($_SESSION["Cantidad"] != 0)
                                                     {
@@ -106,11 +102,8 @@
                                                         </button>';
                                                     }
                                                 ?>
-
                                             </div>
-
                                         </div>
-
 
                                     </div>
                                 </div>
@@ -134,15 +127,23 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Confirmación de Pago</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Procesar</button>
-                </div>
+
+                <form id="formRealizarPago" action="" method="POST">
+                    <div class="modal-body">
+
+                        <label class="form-label">Medio de Pago</label>
+                        <input type="text" class="form-control" id="MedioPago" name="MedioPago" />
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" id="btnRealizarPagoCarrito" name="btnRealizarPagoCarrito"
+                            class="btn btn-primary">Procesar</button>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>

@@ -98,6 +98,13 @@
                     <i class="menu-icon tf-icons bx bx-box"></i>
                     <div data-i18n="Analytics">Mi Carrito</div>
                   </a>
+                </li>
+                
+                <li class="menu-item">
+                  <a href="../Carrito/MisCompras.php" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-box"></i>
+                    <div data-i18n="Analytics">Mis Compras</div>
+                  </a>
                 </li>';
             }
 
