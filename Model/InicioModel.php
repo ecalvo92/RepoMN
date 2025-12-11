@@ -102,9 +102,61 @@
             $sentencia = "CALL ConsultarIndicadores()";
             $resultado = $context -> query($sentencia);
 
-            $datos = null;
+            $datos = [];
             while ($row = $resultado->fetch_assoc()) {
-                $datos = $row;
+                $datos[] = $row;
+            }
+
+            $resultado->free();
+            CloseConnection($context);
+
+            return $datos;
+        }
+        catch(Exception $error)
+        {
+            SaveError($error);
+            return null;
+        }
+    } 
+
+    function ConsultarMejorClienteModel()
+    {
+        try
+        {
+            $context = OpenConnection();
+
+            $sentencia = "CALL ConsultarMejorCliente()";
+            $resultado = $context -> query($sentencia);
+
+            $datos = [];
+            while ($row = $resultado->fetch_assoc()) {
+                $datos[] = $row;
+            }
+
+            $resultado->free();
+            CloseConnection($context);
+
+            return $datos;
+        }
+        catch(Exception $error)
+        {
+            SaveError($error);
+            return null;
+        }
+    } 
+
+    function ConsultarProductoMasVendidoModel()
+    {
+        try
+        {
+            $context = OpenConnection();
+
+            $sentencia = "CALL ConsultarProductoMasVendido()";
+            $resultado = $context -> query($sentencia);
+
+            $datos = [];
+            while ($row = $resultado->fetch_assoc()) {
+                $datos[] = $row;
             }
 
             $resultado->free();

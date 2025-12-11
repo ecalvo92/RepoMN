@@ -91,6 +91,16 @@
     {
         return ConsultarIndicadoresModel();
     }
+
+    function ConsultarMejorCliente()
+    {
+        return ConsultarMejorClienteModel();
+    }
+
+    function ConsultarProductoMasVendido()
+    {
+        return ConsultarProductoMasVendidoModel();
+    }
     
 
 ?>
