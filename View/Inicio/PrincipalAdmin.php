@@ -36,6 +36,7 @@
 
                     <div class="container-xxl flex-grow-1 container-p-y">
 
+
                         <!-- INDICADORES -->
                         <div class="container mt-4">
                             <div class="row g-4">
@@ -60,12 +61,13 @@
                             </div>
                         </div>
 
+
+                        <!-- TABLAS -->
                         <div class="row">
                             <div class="col-md-6">
 
                                 <div class="card mb-4 mt-4 ">
-                                    <div
-                                        class="d-flex justify-content-between align-items-center position-relative">
+                                    <div class="d-flex justify-content-between align-items-center position-relative">
                                         <h4 class="card-header mb-0 text-center flex-grow-1">MEJORES CLIENTES</h4>
                                     </div>
                                     <div class="card-body">
@@ -93,8 +95,7 @@
 
                             <div class="col-md-6">
                                 <div class="card mb-4 mt-4">
-                                    <div
-                                        class="d-flex justify-content-between align-items-center position-relative">
+                                    <div class="d-flex justify-content-between align-items-center position-relative">
                                         <h4 class="card-header mb-0 text-center flex-grow-1">PRODUCTOS MÁS VENDIDOS</h4>
                                     </div>
                                     <div class="card-body">
@@ -121,6 +122,24 @@
                             </div>
 
                         </div>
+
+
+                        <!-- GRAFICO -->
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body px-0">
+                                    <div class="tab-content p-0">
+                                        <div class="tab-pane fade show active" id="navs-tabs-line-card-income"
+                                            role="tabpanel">
+
+                                            <div id="incomeChart"></div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
 
                         <?php ShowFooter(); ?>
 

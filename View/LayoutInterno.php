@@ -26,6 +26,7 @@
           <link rel="stylesheet" href="../css/theme-default.css" class="template-customizer-theme-css" />
           <link rel="stylesheet" href="../css/demo.css" />
           <link rel="stylesheet" href="../css/perfect-scrollbar.css" />
+          <link rel="stylesheet" href="../css/apex-charts.css" />
           <link rel="stylesheet" href="https://cdn.datatables.net/2.3.4/css/dataTables.bootstrap5.css" />
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-5/bootstrap-5.min.css">
@@ -45,6 +46,8 @@
         <script src="../js/perfect-scrollbar.js"></script>
         <script src="../js/menu.js"></script>
         <script src="../js/main.js"></script>
+        <script src="../js/apexcharts.js"></script>
+        <script src="../js/dashboards-analytics.js"></script>
         <script async defer src="https://buttons.github.io/buttons.js"></script>
         <script src="https://cdn.datatables.net/2.3.4/js/dataTables.js"></script>
         <script src="https://cdn.datatables.net/2.3.4/js/dataTables.bootstrap5.js"></script>';

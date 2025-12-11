@@ -101,6 +101,11 @@
     {
         return ConsultarProductoMasVendidoModel();
     }
-    
+
+    if(isset($_POST["FNCosultarInfoGrafico"]))
+    {
+        $resultado = ConsultarVentasAnualesModel();
+        echo json_encode($resultado);
+    }
 
 ?>
