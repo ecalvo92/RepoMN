@@ -22,59 +22,36 @@
                         <span class="ms-2">
                             <img src="images/logo.svg" alt="" /></span>
                     </a>
-                    <h1 class="card-title mb-5 h5">Create your account</h1>
+                    <h1 class="card-title mb-5 h5">Registrar Usuarios</h1>
                 </div>
 
                 <form class="needs-validation mt-3" novalidate>
                     <div class="mb-3">
-                        <label for="fullName" class="form-label">Full name</label>
-                        <input id="fullName" type="text" class="form-control" placeholder="Jane Doe" required />
-                        <div class="invalid-feedback">Please enter your name.</div>
+                        <label for="identificacion" class="form-label">Identificación</label>
+                        <input id="identificacion" type="text" class="form-control" required />
                     </div>
 
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email address</label>
-                        <input id="email" type="email" class="form-control" placeholder="name@example.com" required />
-                        <div class="invalid-feedback">Please enter a valid email.</div>
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input id="nombre" type="text" class="form-control" required />
                     </div>
 
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input id="password" type="password" class="form-control" placeholder="Create a password"
-                            required minlength="6" />
-                        <div class="invalid-feedback">
-                            Please provide a password (min 6 characters).
-                        </div>
+                        <label for="correoElectronico" class="form-label">Correo Electrónico</label>
+                        <input id="correoElectronico" type="text" class="form-control" required />
                     </div>
 
                     <div class="mb-3">
-                        <label for="confirmPassword" class="form-label">Confirm password</label>
-                        <input id="confirmPassword" type="password" class="form-control" placeholder="Repeat password"
-                            required oninput="
-                  this.setCustomValidity(
-                    document.getElementById('password').value !== this.value
-                      ? 'Passwords do not match.'
-                      : '',
-                  )
-                " />
-                        <div class="invalid-feedback">Passwords must match.</div>
+                        <label for="contrasenna" class="form-label">Contraseña</label>
+                        <input id="contrasenna" type="password" class="form-control" required minlength="6" />
                     </div>
 
-                    <div class="mb-3 form-check">
-                        <input id="terms" class="form-check-input" type="checkbox" required />
-                        <label class="form-check-label small" for="terms">I agree to the
-                            <a href="#" class="text-decoration-none">terms and privacy</a></label>
-                        <div class="invalid-feedback">
-                            You must agree before continuing.
-                        </div>
-                    </div>
-
-                    <button class="btn btn-primary w-100" type="submit">Sign up</button>
+                    <button class="btn btn-primary w-100" type="submit">Procesar</button>
                 </form>
 
                 <div class="text-center mt-3 small text-muted">
-                    Already have an account?
-                    <a href="signin.html" class="link-primary">Sign in</a>
+                    ¿Ya tiene una cuenta?
+                    <a href="IniciarSesion.html" class="link-primary">Inicie Sesión</a>
                 </div>
             </div>
         </div>
