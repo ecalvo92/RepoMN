@@ -8,9 +8,9 @@
   font-style: normal;
   font-weight: 400;
   src:
-    url(/inapp/assets/tabler-icons.woff2?v3.35.0) format("woff2"),
-    url(/inapp/assets/tabler-icons.woff?) format("woff"),
-    url(/inapp/assets/tabler-icons.ttf?v3.35.0) format("truetype");
+    url(tabler-icons.woff2?v3.35.0) format("woff2"),
+    url(tabler-icons.woff?) format("woff"),
+    url(tabler-icons.ttf?v3.35.0) format("truetype");
 }
 .ti {
   font-family: tabler-icons !important;
