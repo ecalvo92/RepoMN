@@ -1,4 +1,5 @@
 <?php
+    include_once '../../Controller/InicioController.php';
     include_once '../LayoutExterno.php';
 ?>
 
@@ -20,28 +21,28 @@
                     <h1 class="card-title mb-5 h5">Registrar Usuarios</h1>
                 </div>
 
-                <form class="needs-validation mt-3" novalidate>
+                <form action="" method="post" class="needs-validation mt-3" novalidate>
                     <div class="mb-3">
                         <label for="identificacion" class="form-label">Identificación</label>
-                        <input id="identificacion" type="text" class="form-control" required />
+                        <input id="identificacion" name="identificacion" type="text" class="form-control" required />
                     </div>
 
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre</label>
-                        <input id="nombre" type="text" class="form-control" required />
+                        <input id="nombre" name="nombre" type="text" class="form-control" required />
                     </div>
 
                     <div class="mb-3">
                         <label for="correoElectronico" class="form-label">Correo Electrónico</label>
-                        <input id="correoElectronico" type="text" class="form-control" required />
+                        <input id="correoElectronico" name="correoElectronico" type="text" class="form-control" required />
                     </div>
 
                     <div class="mb-3">
                         <label for="contrasenna" class="form-label">Contraseña</label>
-                        <input id="contrasenna" type="password" class="form-control" required minlength="6" />
+                        <input id="contrasenna" name="contrasenna" type="password" class="form-control" required minlength="6" />
                     </div>
 
-                    <button class="btn btn-primary w-100" type="submit">Procesar</button>
+                    <button id="btnRegistrar" name="btnRegistrar" type="submit" class="btn btn-primary w-100">Procesar</button>
                 </form>
 
                 <div class="text-center mt-3 small text-muted">
