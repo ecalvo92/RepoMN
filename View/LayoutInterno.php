@@ -7,6 +7,7 @@ function ImportCSS()
         <meta charset="UTF-8" />
         <title>Proyecto Web MN</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="../css/main.css" />
         </head>
     ';
@@ -15,6 +16,7 @@ function ImportCSS()
 function ImportJS()
 {
     echo '
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="../js/sidebar.js"></script>
     ';
 }
@@ -43,10 +45,8 @@ function Navbar()
                         <div class="dropdown-menu dropdown-menu-end p-0" style="min-width: 200px;">
                             <div>
                                 <div class="d-flex gap-3 align-items-center border-dashed border-bottom px-3 py-3">
-                                    <img src="../images/avatar-1.jpg" alt="" class="avatar avatar-md rounded-circle" />
                                     <div>
-                                        <h4 class="mb-0 small">Shrina Tesla</h4>
-                                        <p class="mb-0  small">@imshrina</p>
+                                        <h4 class="mb-0 small">Shrina Tesla @imshrina</h4>
                                     </div>
                                 </div>
                                 <div class="p-3 d-flex flex-column gap-1 small lh-lg">
@@ -87,9 +87,12 @@ function Sidebar()
     echo '
         <aside id="sidebar" class="sidebar">
         <div class="logo-area">
-            <a href="index.html" class="d-inline-flex"><img src="../images/logo-fidelitas.png" alt="" width="130">
+            <a href="index.html" class="d-inline-flex">
+                <img src="../images/logo-fidelitas.png" alt="" width="100" class="logo-full" />
+                <img src="../images/logo-fidelitas-letra.png" alt="" width="32" class="logo-collapsed" />
+            </a>
         </div>
-        <ul class="nav flex-column">
+        <ul class="nav flex-column mt-5">
             <li><a class="nav-link active" href="index.html"><i class="ti ti-home"></i><span
                         class="nav-text">Dashboard</span></a></li>
         </ul>

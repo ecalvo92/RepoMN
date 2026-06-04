@@ -31205,8 +31205,9 @@ fieldset:disabled .btn {
   background: #fff;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
-  padding-left: 17px;
+  padding-left: 0;
   color: #262626;
   border-bottom: 1px solid #e5e5e5;
 }
@@ -31221,6 +31222,19 @@ fieldset:disabled .btn {
 .sidebar.collapsed .nav-text,
 .sidebar.collapsed .logo-text {
   display: none;
+}
+.logo-collapsed {
+  display: none;
+}
+.sidebar.collapsed .logo-area {
+  padding-left: 0;
+  justify-content: center;
+}
+.sidebar.collapsed .logo-full {
+  display: none;
+}
+.sidebar.collapsed .logo-collapsed {
+  display: block;
 }
 .topbar {
   height: 60px;
