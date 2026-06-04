@@ -1,12 +1,13 @@
+<?php
+    include_once '../LayoutExterno.php';
+?>
+
 <!doctype html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <title>Proyecto Web MN</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="../css/main.css" />
-</head>
+<?php
+    ImportCSS();
+?>
 
 <body>
     <div class="container d-flex align-items-center justify-content-center min-vh-100">
@@ -51,8 +52,9 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <?php
+        ImportJS();
+    ?>
     <script src="../js/registro.js"></script>
 </body>
 
