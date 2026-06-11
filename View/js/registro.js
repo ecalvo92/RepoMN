@@ -1,6 +1,6 @@
 $(function () {
 
-    $("#nombre").prop("readonly", true);
+    //$("#nombre").prop("readonly", true);
     $("#nombre").css("background-color", "#d9dde28d");
 
 });
