@@ -1,5 +1,5 @@
 <?php
-    include_once '../../Model/UtilitarioModel.php';
+    include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/Model/UtilitarioModel.php';
 
     function RegistrarUsuarioModel($identificacion,$nombre,$correoElectronico,$contrasenna)
     {

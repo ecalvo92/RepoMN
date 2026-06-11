@@ -1,5 +1,5 @@
 <?php
-    include_once '../../Model/InicioModel.php';
+    include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/Model/InicioModel.php';
 
     if(isset($_POST["btnRegistrar"]))
     {

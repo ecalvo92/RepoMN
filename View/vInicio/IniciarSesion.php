@@ -1,5 +1,5 @@
 <?php
-    include_once '../LayoutExterno.php';
+    include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/View/LayoutExterno.php';
 ?>
 
 <!doctype html>
