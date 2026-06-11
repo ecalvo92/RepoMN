@@ -1,4 +1,5 @@
 <?php
+    include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/Controller/InicioController.php';
     include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/View/LayoutExterno.php';
 ?>
 
@@ -20,10 +21,18 @@
                     <h1 class="card-title mb-5 h5">Iniciar Sesión</h1>
                 </div>
 
-                <form class="needs-validation mt-3" novalidate>
+                <form action="" method="post" class="needs-validation mt-3">
+
+                    <?php
+                        if(isset($_POST["Mensaje"]))
+                        {
+                            echo $_POST["Mensaje"];
+                        }
+                    ?>
+
                     <div class="mb-3">
                         <label for="identificacion" class="form-label">Identificación</label>
-                        <input id="identificacion" type="text" class="form-control" required autofocus />
+                        <input id="identificacion" name="identificacion" type="text" class="form-control" required autofocus />
                     </div>
 
                     <div class="mb-3">
@@ -31,10 +40,10 @@
                             <span>Contraseña</span>
                             <a href="RecuperarAcceso.php" class="small link-primary">¿Olvidó su contraseña?</a>
                         </label>
-                        <input id="contrasenna" type="password" class="form-control" required minlength="6" />
+                        <input id="contrasenna" name="contrasenna" type="password" class="form-control" required />
                     </div>
 
-                    <button class="btn btn-primary w-100" type="submit">Procesar</button>
+                    <button type="submit" id="btnIniciarSesion" name="btnIniciarSesion" class="btn btn-primary w-100">Procesar</button>
                 </form>
 
                 <div class="text-center mt-3 small text-muted">
