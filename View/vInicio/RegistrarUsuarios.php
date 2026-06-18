@@ -18,10 +18,18 @@
                     <a href="index.html" class="mb-2 d-inline-block"><img src="../images/logo-fidelitas.png" alt=""
                             width="130" />
                     </a>
-                    <h1 class="card-title mb-5 h5">Registrar Usuarios</h1>
+                    <h1 class="card-title mb-3 h5">Registrar Usuarios</h1>
                 </div>
 
+                <?php
+                    if(isset($_POST["Mensaje"]))
+                    {
+                        echo $_POST["Mensaje"];
+                    }
+                ?>
+
                 <form action="" method="post" class="needs-validation mt-3">
+
                     <div class="mb-3">
                         <label for="identificacion" class="form-label">Identificación</label>
                         <input id="identificacion" name="identificacion" type="text" class="form-control" required />
