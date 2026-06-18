@@ -24,7 +24,8 @@
                 <?php
                     if(isset($_POST["Mensaje"]))
                     {
-                        echo $_POST["Mensaje"];
+                        echo '<div class="alert alert-danger text-center">' 
+                             . $_POST["Mensaje"] . '</div>';
                     }
                 ?>
 
