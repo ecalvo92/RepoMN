@@ -32,7 +32,8 @@
 
                     <div class="mb-3">
                         <label for="identificacion" class="form-label">Identificación</label>
-                        <input id="identificacion" name="identificacion" type="text" class="form-control" />
+                        <input id="identificacion" name="identificacion" type="text" class="form-control" 
+                        onkeyup="ConsultarNombreAPI();" />
                     </div>
 
                     <div class="mb-3">

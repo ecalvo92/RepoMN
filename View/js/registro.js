@@ -1,6 +1,6 @@
 $(function () {
 
-    //$("#nombre").prop("readonly", true);
+    $("#nombre").prop("readonly", true);
     $("#nombre").css("background-color", "#d9dde28d");
 
     $("#formRegistrarUsuarios").validate({
@@ -51,11 +51,20 @@ $(function () {
 
 });
 
-/*
-    document.addEventListener("DOMContentLoaded", function () {
-        
-        document.getElementById("nombre").readOnly = true;
-        document.getElementById("nombre").style.backgroundColor = "#d9dde28d";
+function ConsultarNombreAPI()
+{
+    let identificacion = $("#identificacion").val();
+    $("#nombre").val("");
 
-    });
-*/
+    if(identificacion.length >= 9)
+    {
+        $.ajax({
+            type: 'GET',
+            url: 'https://apis.gometa.org/cedulas/' + identificacion,
+            dataType: 'json',
+            success: function(data){
+                $("#nombre").val(data.nombre);
+            }
+        });
+    }
+}
