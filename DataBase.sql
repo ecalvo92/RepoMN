@@ -18,6 +18,33 @@ USE `mn`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `tb_error`
+--
+
+DROP TABLE IF EXISTS `tb_error`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tb_error` (
+  `Consecutivo` int(11) NOT NULL AUTO_INCREMENT,
+  `Mensaje` varchar(8000) NOT NULL,
+  `FechaHora` datetime NOT NULL,
+  `Accion` varchar(100) NOT NULL,
+  `ConsecutivoUsuario` int(11) NOT NULL,
+  PRIMARY KEY (`Consecutivo`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_error`
+--
+
+LOCK TABLES `tb_error` WRITE;
+/*!40000 ALTER TABLE `tb_error` DISABLE KEYS */;
+INSERT INTO `tb_error` VALUES (1,'Duplicate entry \'jmatamoros60796@ufide.ac.cr\' for key \'UK_CorreoElectronico\'','2026-06-17 19:10:35','RegistrarUsuarioModel',0),(2,'Duplicate entry \'jmatamoros60796@ufide.ac.cr\' for key \'UK_CorreoElectronico\'','2026-06-17 19:43:19','RegistrarUsuarioModel',0),(3,'Duplicate entry \'jmatamoros60796@ufide.ac.cr\' for key \'UK_CorreoElectronico\'','2026-06-17 19:45:22','RegistrarUsuarioModel',0),(4,'Duplicate entry \'jmatamoros60796@ufide.ac.cr\' for key \'UK_CorreoElectronico\'','2026-06-17 19:45:47','RegistrarUsuarioModel',0),(5,'Duplicate entry \'\' for key \'UK_Identificacion\'','2026-06-17 20:27:10','RegistrarUsuarioModel',0),(6,'Duplicate entry \'\' for key \'UK_Identificacion\'','2026-06-17 20:27:15','RegistrarUsuarioModel',0),(7,'Duplicate entry \'304590415\' for key \'UK_Identificacion\'','2026-06-17 20:53:29','RegistrarUsuarioModel',0),(8,'Duplicate entry \'304590415\' for key \'UK_Identificacion\'','2026-06-17 20:55:38','RegistrarUsuarioModel',0),(9,'Duplicate entry \'304590415\' for key \'UK_Identificacion\'','2026-06-17 20:56:03','RegistrarUsuarioModel',0);
+/*!40000 ALTER TABLE `tb_error` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tb_usuario`
 --
 
@@ -34,7 +61,7 @@ CREATE TABLE `tb_usuario` (
   PRIMARY KEY (`Consecutivo`),
   UNIQUE KEY `UK_Identificacion` (`Identificacion`),
   UNIQUE KEY `UK_CorreoElectronico` (`CorreoElectronico`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +70,7 @@ CREATE TABLE `tb_usuario` (
 
 LOCK TABLES `tb_usuario` WRITE;
 /*!40000 ALTER TABLE `tb_usuario` DISABLE KEYS */;
-INSERT INTO `tb_usuario` VALUES (1,'304590415','Eduardo Calvo Castillo','ecalvo90415@ufide.ac.cr','90415',_binary ''),(3,'208260796','MATAMOROS RAMIREZ JOCELYN STACY','jmatamoros60796@ufide.ac.cr','60796',_binary ''),(4,'118670899','ARAYA ROJAS ELIZABETH DEL CARMEN','earaya70899@ufide.ac.cr','70899',_binary '');
+INSERT INTO `tb_usuario` VALUES (16,'304590415','EDUARDO JOSE CALVO CASTILLO','ecalvo90415@ufide.ac.cr','90415',_binary '');
 /*!40000 ALTER TABLE `tb_usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -75,6 +102,32 @@ BEGIN
     WHERE	Identificacion = pIdentificacion
 		AND Contrasenna = pContrasenna
         AND Estado = 1;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `spRegistrarError` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spRegistrarError`(
+	pMensaje 			varchar(8000), 
+    pAccion				varchar(100), 
+    pConsecutivoUsuario	int(11)
+)
+BEGIN
+
+	INSERT INTO tb_error (Mensaje,FechaHora,Accion,ConsecutivoUsuario)
+	VALUES (pMensaje, NOW(), pAccion, pConsecutivoUsuario);
 
 END ;;
 DELIMITER ;
@@ -119,4 +172,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-06-10 20:56:08
+-- Dump completed on 2026-06-17 20:57:27
