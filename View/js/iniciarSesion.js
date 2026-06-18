@@ -1,19 +1,8 @@
-$(function () {
-
-    //$("#nombre").prop("readonly", true);
-    $("#nombre").css("background-color", "#d9dde28d");
-
-    $("#formRegistrarUsuarios").validate({
+$(document).ready(function () {
+    $("#formIniciarSesion").validate({
         rules: {
             identificacion: {
                 required: true
-            },
-            nombre: {
-                required: true
-            },
-            correoElectronico: {
-                required: true,
-                email: true
             },
             contrasenna: {
                 required: true,
@@ -23,13 +12,6 @@ $(function () {
         messages: {
             identificacion: {
                 required: "Campo obligatorio."
-            },
-            nombre: {
-                required: "Campo obligatorio."
-            },
-            correoElectronico: {
-                required: "Campo obligatorio.",
-                email: "Formato no válido."
             },
             contrasenna: {
                 required: "Campo obligatorio.",
@@ -48,14 +30,4 @@ $(function () {
             $(element).addClass("is-valid").removeClass("is-invalid");
         }
     });
-
 });
-
-/*
-    document.addEventListener("DOMContentLoaded", function () {
-        
-        document.getElementById("nombre").readOnly = true;
-        document.getElementById("nombre").style.backgroundColor = "#d9dde28d";
-
-    });
-*/

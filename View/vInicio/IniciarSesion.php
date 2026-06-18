@@ -28,11 +28,11 @@
                     }
                 ?>
 
-                <form action="" method="post" class="needs-validation mt-3">
+                <form action="" method="post" class="needs-validation mt-3" id="formIniciarSesion">
 
                     <div class="mb-3">
                         <label for="identificacion" class="form-label">Identificación</label>
-                        <input id="identificacion" name="identificacion" type="text" class="form-control" required autofocus />
+                        <input id="identificacion" name="identificacion" type="text" class="form-control" autofocus />
                     </div>
 
                     <div class="mb-3">
@@ -40,7 +40,7 @@
                             <span>Contraseña</span>
                             <a href="RecuperarAcceso.php" class="small link-primary">¿Olvidó su contraseña?</a>
                         </label>
-                        <input id="contrasenna" name="contrasenna" type="password" class="form-control" required />
+                        <input id="contrasenna" name="contrasenna" type="password" class="form-control" />
                     </div>
 
                     <button type="submit" id="btnIniciarSesion" name="btnIniciarSesion" class="btn btn-primary w-100">Procesar</button>
@@ -54,5 +54,10 @@
         </div>
     </div>
 
+    <?php
+        ImportJS();
+    ?>
+    <script src="../js/iniciarSesion.js"></script>
+    
 </body>
 </html>
