@@ -1,4 +1,5 @@
 <?php
+    include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/Controller/UtilitarioController.php';
     include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/Model/InicioModel.php';
 
     if(isset($_POST["btnRegistrar"]))
@@ -48,7 +49,7 @@
 
             if($actualizacion)
             {
-                //3. Enviar la contraseña temporal al correo electrónico
+                EnviarCorreo("Recuperación de acceso", "Su nueva contraseña temporal es: $temporal", $datos['CorreoElectronico']);
 
                 header("Location: ../../View/vInicio/IniciarSesion.php");
                 exit();
@@ -56,17 +57,4 @@
         }
 
         $_POST["Mensaje"] = "No se ha podido recuperar su acceso correctamente";
-    }
-
-    function generarContrasena()
-    {
-        $caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        $contrasena = '';
-        $max = strlen($caracteres) - 1;
-
-        for ($i = 0; $i < 8; $i++) {
-            $contrasena .= $caracteres[random_int(0, $max)];
-        }
-
-        return $contrasena;
     }
