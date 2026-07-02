@@ -1,4 +1,5 @@
 <?php
+    include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/Controller/InicioController.php';
     include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/View/LayoutExterno.php';
 ?>
 
@@ -20,13 +21,22 @@
                     <h1 class="card-title mb-5 h5">Recuperar Acceso</h1>
                 </div>
 
-                <form class="needs-validation mt-3" novalidate>
+                <?php
+                    if(isset($_POST["Mensaje"]))
+                    {
+                        echo '<div class="alert alert-danger text-center">' 
+                             . $_POST["Mensaje"] . '</div>';
+                    }
+                ?>
+
+                <form action="" method="post" class="needs-validation mt-3" id="formRecuperarAcceso">
+                    
                     <div class="mb-3">
                         <label for="correoElectronico" class="form-label">Correo Electrónico</label>
-                        <input id="correoElectronico" type="text" class="form-control" required autofocus />
+                        <input id="correoElectronico" name="correoElectronico" type="text" class="form-control" autofocus />
                     </div>
 
-                    <button class="btn btn-primary w-100" type="submit">Procesar</button>
+                    <button type="submit" id="btnRecuperarAcceso" name="btnRecuperarAcceso" class="btn btn-primary w-100">Procesar</button>
                 </form>
 
                 <div class="text-center mt-3 small text-muted">
@@ -36,6 +46,11 @@
             </div>
         </div>
     </div>
+
+    <?php
+        ImportJS();
+    ?>
+    <script src="../js/recuperarAcceso.js"></script>
 
 </body>
 </html>
