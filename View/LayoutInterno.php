@@ -59,26 +59,16 @@ function Navbar()
                         </a>
                         <div class="dropdown-menu dropdown-menu-end p-0" style="min-width: 200px;">
                             <div>
+                            
                                 <div class="p-3 d-flex flex-column gap-1 small lh-lg">
                                     <a href="#!" class="">
-
-                                        <span>Home</span>
+                                        <span> Mi perfil</span>
                                     </a>
                                     <a href="#!" class="">
-
-                                        <span> Inbox</span>
+                                        <span> Seguridad</span>
                                     </a>
                                     <a href="#!" class="">
-
-                                        <span> Chat</span>
-                                    </a>
-                                    <a href="#!" class="">
-
-                                        <span> Activity</span>
-                                    </a>
-                                    <a href="#!" class="">
-
-                                        <span> Account Settings</span>
+                                        <span> Salir</span>
                                     </a>
                                 </div>
 
