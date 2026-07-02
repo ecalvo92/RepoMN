@@ -50,7 +50,7 @@
         }
         catch (Exception $e)
         {
-            AddError($e, 'EnviarCorreo', 0);
+            AddError($e, 'EnviarCorreo');
             return false;
         }
     }
