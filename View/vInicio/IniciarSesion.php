@@ -32,7 +32,7 @@
                 <form action="" method="post" class="needs-validation mt-3" id="formIniciarSesion">
 
                     <div class="mb-3">
-                        <label for="identificacion" class="form-label">Identificación</label>
+                        <label for="identificacion" class="form-label">Correo electrónico o Identificación</label>
                         <input id="identificacion" name="identificacion" type="text" class="form-control" autofocus />
                     </div>
 

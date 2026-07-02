@@ -1,8 +1,16 @@
+$.validator.addMethod("correoOCedula", function (value) {
+    if (value.indexOf('@') !== -1 || value.indexOf('.') !== -1) {
+        return /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(value);
+    }
+    return true;
+}, "Ingrese un correo electrónico válido.");
+
 $(document).ready(function () {
     $("#formIniciarSesion").validate({
         rules: {
             identificacion: {
-                required: true
+                required: true,
+                correoOCedula: true
             },
             contrasenna: {
                 required: true,
