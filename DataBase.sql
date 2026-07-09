@@ -61,7 +61,7 @@ CREATE TABLE `tb_usuario` (
   PRIMARY KEY (`Consecutivo`),
   UNIQUE KEY `UK_Identificacion` (`Identificacion`),
   UNIQUE KEY `UK_CorreoElectronico` (`CorreoElectronico`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +70,7 @@ CREATE TABLE `tb_usuario` (
 
 LOCK TABLES `tb_usuario` WRITE;
 /*!40000 ALTER TABLE `tb_usuario` DISABLE KEYS */;
-INSERT INTO `tb_usuario` VALUES (16,'304590415','EDUARDO JOSE CALVO CASTILLO','ecalvo90415@ufide.ac.cr','90415',_binary ''),(20,'118780222','JUAN JOSE SALAS AMADOR','jsalas80222@ufide.ac.cr','RRYKX3UO',_binary '');
+INSERT INTO `tb_usuario` VALUES (16,'304590415','EDUARDO JOSE CALVO CASTILLO','ecalvo90415@ufide.ac.cr','90415',_binary ''),(20,'118780222','JUAN JOSE SALAS AMADOR','jsalas80222@ufide.ac.cr','EUAQPDD9',_binary ''),(21,'207480733','JOSETH STEVEN CESPEDES MOYA','jcespedes80733@ufide.ac.cr','UN1Q2ZSK',_binary '');
 /*!40000 ALTER TABLE `tb_usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -229,4 +229,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-07-01 20:58:02
+-- Dump completed on 2026-07-08 20:58:42
