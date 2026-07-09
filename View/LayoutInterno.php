@@ -64,18 +64,18 @@ function Navbar()
                             
                                 <div class="p-2 d-flex flex-column gap-0 small">
 
-                                    <a href="#!" class="btn btn-sm text-start py-1">
+                                    <a href="#!" class="btn btn-sm text-start py-1 fs-6">
                                         <i class="fa-solid fa-user me-2"></i>
                                         Mi perfil
                                     </a>
 
-                                    <a href="#!" class="btn btn-sm text-start py-1">
+                                    <a href="#!" class="btn btn-sm text-start py-1 fs-6">
                                         <i class="fa-solid fa-shield-halved me-2"></i>
                                         Seguridad
                                     </a>
 
                                     <form action="" method="POST">
-                                        <button id="btnSalir" name="btnSalir" type="submit" class="btn btn-sm bg-transparent border-0 text-start py-1">
+                                        <button id="btnSalir" name="btnSalir" type="submit" class="btn btn-sm bg-transparent border-0 text-start py-1 fs-6">
                                             <i class="fa-solid fa-right-from-bracket me-2"></i>
                                             Salir
                                         </button>
