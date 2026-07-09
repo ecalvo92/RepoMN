@@ -69,3 +69,11 @@
 
         $_POST["Mensaje"] = "No se ha podido recuperar su acceso correctamente";
     }
+
+    if(isset($_POST["btnSalir"]))        
+    {
+        session_destroy();
+        header("Location: ../../View/vInicio/IniciarSesion.php");
+        exit();
+    }
+    
