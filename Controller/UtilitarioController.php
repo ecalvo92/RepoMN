@@ -21,7 +21,7 @@
             require 'PHPMailer/src/PHPMailer.php';
             require 'PHPMailer/src/SMTP.php';
 
-            $correoSalida = "ecalvo90415@ufide.ac.cr";
+            $correoSalida = "abc@gmail.com";
             $contrasennaSalida = "";
 
             if($contrasennaSalida == "")
@@ -34,7 +34,7 @@
 
             $mail->IsSMTP();
             $mail->IsHTML(true);
-            $mail->Host = 'smtp.office365.com';
+            $mail->Host = 'smtp.gmail.com';
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
             $mail->SMTPAuth = true;

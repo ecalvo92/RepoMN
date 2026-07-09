@@ -56,7 +56,11 @@
 
             if($actualizacion)
             {
-                EnviarCorreo("Recuperación de acceso", "Su nueva contraseña temporal es: $temporal", $datos['CorreoElectronico']);
+                $plantilla = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/RepoMN/View/templates/Recuperacion.html');
+                $plantilla = str_replace("{{TEMPORAL}}", $temporal, $plantilla);
+                $plantilla = str_replace("{{NOMBRE}}", $datos['Nombre'], $plantilla);
+
+                EnviarCorreo("Recuperación de acceso", $plantilla, $datos['CorreoElectronico']);
 
                 header("Location: ../../View/vInicio/IniciarSesion.php");
                 exit();
