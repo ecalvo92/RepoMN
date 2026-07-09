@@ -40259,3 +40259,77 @@ fieldset:disabled .btn {
     display: none !important;
   }
 }
+
+/* ── CambiarContrasenna ── */
+.password-strength-bar {
+    height: 6px;
+    border-radius: 3px;
+    transition: width 0.4s ease, background-color 0.4s ease;
+}
+.requirement-item {
+    font-size: 0.82rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+    color: #6c757d;
+    transition: color 0.3s;
+}
+.requirement-item.valid {
+    color: #198754;
+}
+.requirement-item i {
+    width: 16px;
+    text-align: center;
+}
+.security-info-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: #fff;
+    border-radius: 12px;
+}
+.security-info-card h5,
+.security-info-card p,
+.security-info-card li {
+    color: #fff;
+}
+.security-tip {
+    background: rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.85rem;
+}
+.security-tip i {
+    font-size: 1.1rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+.form-card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+.form-card .card-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px 12px 0 0 !important;
+    padding: 1.4rem 1.6rem;
+}
+.input-group-text {
+    cursor: pointer;
+}
+.page-header-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
