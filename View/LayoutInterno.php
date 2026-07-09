@@ -69,7 +69,7 @@ function Navbar()
                                         Mi perfil
                                     </a>
 
-                                    <a href="#!" class="btn btn-sm text-start py-1 fs-6">
+                                    <a href="../vUsuario/CambiarContrasenna.php" class="btn btn-sm text-start py-1 fs-6">
                                         <i class="fa-solid fa-shield-halved me-2"></i>
                                         Seguridad
                                     </a>
