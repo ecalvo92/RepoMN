@@ -67,6 +67,7 @@
         ImportJS();
     ?>
     <script src="../js/registro.js"></script>
+    <script src="../js/nombresApi.js"></script>
 </body>
 
 </html>

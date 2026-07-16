@@ -29,3 +29,26 @@
 
         $_POST["Mensaje"] = "No se ha podido cambiar su contraseña correctamente";
     }
+
+    if(isset($_POST["btnCambiarPerfil"]))
+    {
+        $identificacion = $_POST["identificacion"];
+        $nombre = $_POST["nombre"];
+        $correoElectronico = $_POST["correoElectronico"];
+        $consecutivo = $_SESSION["ConsecutivoUsuario"];
+     
+        $actualizacion = ActualizarPerfilModel($consecutivo, $identificacion, $nombre, $correoElectronico);
+
+        if($actualizacion)
+        {
+            $_SESSION["IdentificacionUsuario"] = $identificacion;
+            $_SESSION["NombreUsuario"] = $nombre;
+            $_SESSION["CorreoElectronicoUsuario"] = $correoElectronico;
+
+            $_POST["Mensaje"] = "Se ha cambiado su información personal correctamente";
+        }
+        else
+        {
+            $_POST["Mensaje"] = "No se ha podido cambiar su información personal correctamente";
+        }
+    }

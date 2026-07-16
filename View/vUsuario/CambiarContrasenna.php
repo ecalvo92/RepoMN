@@ -37,6 +37,15 @@
 
                 <!-- Formulario -->
                 <div class="col-xl-6 col-lg-6 col-md-8">
+
+                    <?php
+                        if(isset($_POST["Mensaje"]))
+                        {
+                            echo '<div class="alert alert-danger text-center">' 
+                                 . $_POST["Mensaje"] . '</div>';
+                        }
+                    ?>
+
                     <div class="card form-card">
                         <div class="card-header">
                             <h5 class="mb-0 text-white fw-semibold">
