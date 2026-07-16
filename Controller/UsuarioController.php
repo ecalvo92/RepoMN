@@ -52,3 +52,10 @@
             $_POST["Mensaje"] = "No se ha podido cambiar su información personal correctamente";
         }
     }
+
+    function ConsultarUsuario()
+    {
+        $consecutivo = $_SESSION["ConsecutivoUsuario"];
+        $datos = ConsultarUsuarioModel($consecutivo);
+        return $datos;
+    }

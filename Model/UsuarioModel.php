@@ -19,3 +19,29 @@
             return false;
         }
     }
+
+    function ConsultarUsuarioModel($consecutivo)
+    {
+        try
+        {
+            $conn = OpenDB();
+
+            $sql = "CALL spConsultarUsuario('$consecutivo')";
+            $response = $conn -> query($sql);
+
+            //Se guarda el resultado en una variable nueva
+            $datos = null;
+            while($fila = $response -> fetch_assoc())
+            {
+                $datos = $fila;
+            }
+
+            CloseDB($conn);
+            return $datos;
+        }
+        catch(Exception $e)
+        {
+            AddError($e, 'ConsultarUsuarioModel');
+            return null;
+        }
+    }

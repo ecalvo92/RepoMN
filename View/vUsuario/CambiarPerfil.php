@@ -1,6 +1,8 @@
 <?php
     include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/Controller/UsuarioController.php';
     include_once $_SERVER['DOCUMENT_ROOT'] . '/RepoMN/View/LayoutInterno.php';
+
+    $datos = ConsultarUsuario();
 ?>
 
 <!DOCTYPE html>
@@ -64,6 +66,7 @@
                                     </label>
                                     <div class="input-group">
                                         <input type="text" class="form-control" id="identificacion" name="identificacion"
+                                        value="<?php echo $datos['Identificacion']; ?>"
                                         onkeyup="ConsultarNombreAPI();">
                                     </div>
                                 </div>
@@ -73,7 +76,8 @@
                                         <i class="fa-solid fa-user me-1 text-muted"></i>Nombre
                                     </label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="nombre" name="nombre">
+                                        <input type="text" class="form-control" id="nombre" name="nombre"
+                                        value="<?php echo $datos['Nombre']; ?>">
                                     </div>
                                 </div>
 
@@ -82,7 +86,8 @@
                                         <i class="fa-solid fa-envelope me-1 text-muted"></i>Correo Electrónico
                                     </label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="correoElectronico" name="correoElectronico">
+                                        <input type="text" class="form-control" id="correoElectronico" name="correoElectronico"
+                                        value="<?php echo $datos['CorreoElectronico']; ?>">
                                     </div>
                                 </div>
 
