@@ -20,7 +20,8 @@
         {
             $plantilla = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/RepoMN/View/templates/CambioContrasenna.html');
             $plantilla = str_replace("{{NOMBRE}}", $nombreUsuario, $plantilla);
-            $plantilla = str_replace("{{FECHA}}", date('d/m/Y H:i'), $plantilla);
+            date_default_timezone_set('America/Costa_Rica');
+            $plantilla = str_replace("{{FECHA}}", date('d/m/Y h:i A'), $plantilla);
             
             EnviarCorreo("Cambio de contraseña", $plantilla, $correoElectronico);
             CerrarSesion();

@@ -25,8 +25,8 @@
                 <div class="col-12">
                     <div class="d-flex align-items-center gap-3">
                         <div>
-                            <h1 class="fs-4 mb-0 fw-semibold">Seguridad de cuenta</h1>
-                            <p class="text-muted mb-0 small">Actualiza tu contraseña para mantener tu cuenta protegida</p>
+                            <h1 class="fs-4 mb-0 fw-semibold">Información personal</h1>
+                            <p class="text-muted mb-0 small">Actualiza tu información personal para mantener tu cuenta al día</p>
                         </div>
                     </div>
                     <hr class="mt-3 mb-5">
@@ -40,7 +40,7 @@
                     <div class="card form-card">
                         <div class="card-header">
                             <h5 class="mb-0 text-white fw-semibold">
-                                <i class="fa-solid fa-lock me-2"></i>Cambiar contraseña
+                                <i class="fa-solid fa-user me-2"></i>Cambiar información personal
                             </h5>
                         </div>
 
@@ -48,23 +48,30 @@
 
                             <form id="formCambiarContrasenna" action="" method="POST">
 
-                                <!-- Nueva contraseña -->
                                 <div class="mb-3">
-                                    <label for="nuevaContrasenna" class="form-label fw-medium">
-                                        <i class="fa-solid fa-key me-1 text-muted"></i>Contraseña nueva
+                                    <label for="identificacion" class="form-label fw-medium">
+                                        <i class="fa-solid fa-id-card me-1 text-muted"></i>Identificación
                                     </label>
                                     <div class="input-group">
-                                        <input type="password" class="form-control" id="nuevaContrasenna" name="nuevaContrasenna" placeholder="Ingresa tu nueva contraseña" autocomplete="new-password">
+                                        <input type="text" class="form-control" id="identificacion" name="identificacion">
                                     </div>
                                 </div>
 
-                                <!-- Confirmar contraseña -->
                                 <div class="mb-3">
-                                    <label for="confirmarContrasenna" class="form-label fw-medium">
-                                        <i class="fa-solid fa-lock me-1 text-muted"></i>Confirmar contraseña
+                                    <label for="nombre" class="form-label fw-medium">
+                                        <i class="fa-solid fa-user me-1 text-muted"></i>Nombre
                                     </label>
                                     <div class="input-group">
-                                        <input type="password" class="form-control" id="confirmarContrasenna" name="confirmarContrasenna" placeholder="Repite tu nueva contraseña" autocomplete="new-password">
+                                        <input type="text" class="form-control" id="nombre" name="nombre">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="correoElectronico" class="form-label fw-medium">
+                                        <i class="fa-solid fa-envelope me-1 text-muted"></i>Correo Electrónico
+                                    </label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="correoElectronico" name="correoElectronico">
                                     </div>
                                 </div>
 
@@ -84,22 +91,26 @@
                 <div class="col-xl-3 col-lg-4 col-md-8">
                     <div class="card security-info-card h-100">
                         <div class="card-body p-4">
-                                       
+
+                            <h6 class="fw-semibold mb-3">
+                                <i class="fa-solid fa-circle-info me-2"></i>Recomendaciones
+                            </h6>
+
                             <div class="security-tip">
-                                <i class="fa-solid fa-ban"></i>
-                                <div>No uses contraseñas que hayas utilizado anteriormente.</div>
+                                <i class="fa-solid fa-id-card"></i>
+                                <div>Asegúrate de que tu identificación sea válida y esté actualizada.</div>
                             </div>
                             <div class="security-tip">
-                                <i class="fa-solid fa-user-secret"></i>
-                                <div>No compartas tu contraseña con nadie.</div>
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                <div>El nombre se completará automáticamente al ingresar la identificación.</div>
                             </div>
                             <div class="security-tip">
-                                <i class="fa-solid fa-rotate"></i>
-                                <div>Cambia tu contraseña cada 3 a 6 meses.</div>
+                                <i class="fa-solid fa-envelope-circle-check"></i>
+                                <div>Verifica que tu correo electrónico sea válido, ya que se usará para notificaciones.</div>
                             </div>
                             <div class="security-tip">
-                                <i class="fa-solid fa-dice"></i>
-                                <div>Combina letras, números y símbolos para mayor seguridad.</div>
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                                <div>Cualquier cambio en tu información quedará registrado en el sistema.</div>
                             </div>
                         </div>
                     </div>
@@ -117,7 +128,7 @@
     <?php
         ImportJS();
     ?>
-    <script src="../js/cambiarContrasenna.js"></script>
+    <script src="../js/cambiarPerfil.js"></script>
 
 </body>
 

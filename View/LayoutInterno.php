@@ -66,7 +66,7 @@ function Navbar()
                             
                                 <div class="p-2 d-flex flex-column gap-0 small">
 
-                                    <a href="#!" class="btn btn-sm text-start py-1 fs-6">
+                                    <a href="../vUsuario/CambiarPerfil.php" class="btn btn-sm text-start py-1 fs-6">
                                         <i class="fa-solid fa-user me-2"></i>
                                         Mi perfil
                                     </a>
