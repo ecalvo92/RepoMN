@@ -100,13 +100,13 @@ function Sidebar()
     echo '
         <aside id="sidebar" class="sidebar">
         <div class="logo-area">
-            <a href="index.html" class="d-inline-flex">
+            <a href="../vInicio/Principal.php" class="d-inline-flex">
                 <img src="../images/logo-fidelitas.png" alt="" width="100" class="logo-full" />
                 <img src="../images/logo-fidelitas-letra.png" alt="" width="32" class="logo-collapsed" />
             </a>
         </div>
         <ul class="nav flex-column mt-5">
-            <li><a class="nav-link active" href="index.html"><i class="ti ti-home"></i><span
+            <li><a class="nav-link active" href=""><i class="ti ti-home"></i><span
                         class="nav-text">Dashboard</span></a></li>
         </ul>
         </aside>
