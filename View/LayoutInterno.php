@@ -32,9 +32,11 @@ function ImportJS()
 function Navbar()
 {
     $nombreUsuario = "";
+    $nombreRol = "";
     if(isset($_SESSION["NombreUsuario"]))
     {
         $nombreUsuario = $_SESSION["NombreUsuario"];
+        $nombreRol = isset($_SESSION["NombreRol"]) ? $_SESSION["NombreRol"] : "";
     }
     else
     {
@@ -60,6 +62,7 @@ function Navbar()
                     <li class="ms-3 dropdown">
                         <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                            <h4 class="mb-0 small">' . $nombreUsuario . '</h4>
+                           <span class="text-muted" style="font-size:0.75rem;">' . $nombreRol . '</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end p-0 mt-3" style="min-width: 200px;">
                             <div>
