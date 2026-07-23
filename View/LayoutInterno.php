@@ -14,7 +14,6 @@ function ImportCSS()
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="../css/main.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
         </head>
     ';
 }
@@ -70,18 +69,18 @@ function Navbar()
                                 <div class="p-2 d-flex flex-column gap-0 small">
 
                                     <a href="../vUsuario/CambiarPerfil.php" class="btn btn-sm text-start py-1 fs-6">
-                                        <i class="fa-solid fa-user me-2"></i>
+                                        <i class="ti ti-user me-2"></i>
                                         Mi perfil
                                     </a>
 
                                     <a href="../vUsuario/CambiarContrasenna.php" class="btn btn-sm text-start py-1 fs-6">
-                                        <i class="fa-solid fa-shield-halved me-2"></i>
+                                        <i class="ti ti-shield-lock me-2"></i>
                                         Seguridad
                                     </a>
 
                                     <form action="" method="POST">
                                         <button id="btnSalir" name="btnSalir" type="submit" class="btn btn-sm bg-transparent border-0 text-start py-1 fs-6">
-                                            <i class="fa-solid fa-right-from-bracket me-2"></i>
+                                            <i class="ti ti-logout-2 me-2"></i>
                                             Salir
                                         </button>
                                     </form>
@@ -100,6 +99,12 @@ function Navbar()
 
 function Sidebar()
 {
+    $consecutivoRol = "";
+    if(isset($_SESSION["ConsecutivoRol"]))
+    {
+        $consecutivoRol = $_SESSION["ConsecutivoRol"];
+    }
+
     echo '
         <aside id="sidebar" class="sidebar">
         <div class="logo-area">
@@ -108,10 +113,24 @@ function Sidebar()
                 <img src="../images/logo-fidelitas-letra.png" alt="" width="32" class="logo-collapsed" />
             </a>
         </div>
-        <ul class="nav flex-column mt-5">
-            <li><a class="nav-link active" href=""><i class="ti ti-home"></i><span
-                        class="nav-text">Dashboard</span></a></li>
-        </ul>
+        <ul class="nav flex-column mt-5">';
+
+            if($consecutivoRol == 1) {
+                echo '<li><a class="nav-link active" href="../vCursos/Cursos.php"><i class="ti ti-book-2"></i><span
+                        class="nav-text">Cursos</span></a></li>';
+
+                echo '<li><a class="nav-link active" href=""><i class="ti ti-clipboard-list"></i><span
+                        class="nav-text">Asignaciones</span></a></li>';
+            }
+            else {   
+                echo '<li><a class="nav-link active" href=""><i class="ti ti-school"></i><span
+                        class="nav-text">Mi Matricula</span></a></li>';
+                        
+                echo '<li><a class="nav-link active" href=""><i class="ti ti-file-upload"></i><span
+                        class="nav-text">Mis Entregas</span></a></li>';
+            }
+            
+            echo '</ul>
         </aside>
     ';
 }

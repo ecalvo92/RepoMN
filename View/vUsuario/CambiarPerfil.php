@@ -52,7 +52,7 @@
                         
                         <div class="card-header">
                             <h5 class="mb-0 text-white fw-semibold">
-                                <i class="fa-solid fa-user me-2"></i>Cambiar información personal
+                                <i class="ti ti-user me-2"></i>Cambiar información personal
                             </h5>
                         </div>
 
@@ -62,7 +62,7 @@
 
                                 <div class="mb-3">
                                     <label for="identificacion" class="form-label fw-medium">
-                                        <i class="fa-solid fa-id-card me-1 text-muted"></i>Identificación
+                                        <i class="ti ti-id me-1 text-muted"></i>Identificación
                                     </label>
                                     <div class="input-group">
                                         <input type="text" class="form-control" id="identificacion" name="identificacion"
@@ -73,7 +73,7 @@
 
                                 <div class="mb-3">
                                     <label for="nombre" class="form-label fw-medium">
-                                        <i class="fa-solid fa-user me-1 text-muted"></i>Nombre
+                                        <i class="ti ti-user me-1 text-muted"></i>Nombre
                                     </label>
                                     <div class="input-group">
                                         <input type="text" class="form-control" id="nombre" name="nombre"
@@ -83,7 +83,7 @@
 
                                 <div class="mb-3">
                                     <label for="correoElectronico" class="form-label fw-medium">
-                                        <i class="fa-solid fa-envelope me-1 text-muted"></i>Correo Electrónico
+                                        <i class="ti ti-mail me-1 text-muted"></i>Correo Electrónico
                                     </label>
                                     <div class="input-group">
                                         <input type="text" class="form-control" id="correoElectronico" name="correoElectronico"
@@ -93,7 +93,7 @@
 
                                 <div class="d-grid gap-2">
                                     <button type="submit" id="btnCambiarPerfil" name="btnCambiarPerfil" class="btn btn-primary">
-                                        <i class="fa-solid fa-floppy-disk me-2"></i>Procesar
+                                        <i class="ti ti-device-floppy me-2"></i>Procesar
                                     </button>
                                 </div>
 
@@ -109,23 +109,23 @@
                         <div class="card-body p-4">
 
                             <h6 class="fw-semibold mb-3">
-                                <i class="fa-solid fa-circle-info me-2"></i>Recomendaciones
+                                <i class="ti ti-info-circle me-2"></i>Recomendaciones
                             </h6>
 
                             <div class="security-tip">
-                                <i class="fa-solid fa-id-card"></i>
+                                <i class="ti ti-id"></i>
                                 <div>Asegúrate de que tu identificación sea válida y esté actualizada.</div>
                             </div>
                             <div class="security-tip">
-                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                <i class="ti ti-sparkles"></i>
                                 <div>El nombre se completará automáticamente al ingresar la identificación.</div>
                             </div>
                             <div class="security-tip">
-                                <i class="fa-solid fa-envelope-circle-check"></i>
+                                <i class="ti ti-mail-check"></i>
                                 <div>Verifica que tu correo electrónico sea válido, ya que se usará para notificaciones.</div>
                             </div>
                             <div class="security-tip">
-                                <i class="fa-solid fa-triangle-exclamation"></i>
+                                <i class="ti ti-alert-triangle"></i>
                                 <div>Cualquier cambio en tu información quedará registrado en el sistema.</div>
                             </div>
                         </div>

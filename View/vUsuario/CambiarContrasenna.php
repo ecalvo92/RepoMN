@@ -49,7 +49,7 @@
                     <div class="card form-card">
                         <div class="card-header">
                             <h5 class="mb-0 text-white fw-semibold">
-                                <i class="fa-solid fa-lock me-2"></i>Cambiar contraseña
+                                <i class="ti ti-lock me-2"></i>Cambiar contraseña
                             </h5>
                         </div>
 
@@ -60,7 +60,7 @@
                                 <!-- Nueva contraseña -->
                                 <div class="mb-3">
                                     <label for="nuevaContrasenna" class="form-label fw-medium">
-                                        <i class="fa-solid fa-key me-1 text-muted"></i>Contraseña nueva
+                                        <i class="ti ti-key me-1 text-muted"></i>Contraseña nueva
                                     </label>
                                     <div class="input-group">
                                         <input type="password" class="form-control" id="nuevaContrasenna" name="nuevaContrasenna" placeholder="Ingresa tu nueva contraseña" autocomplete="new-password">
@@ -70,7 +70,7 @@
                                 <!-- Confirmar contraseña -->
                                 <div class="mb-3">
                                     <label for="confirmarContrasenna" class="form-label fw-medium">
-                                        <i class="fa-solid fa-lock me-1 text-muted"></i>Confirmar contraseña
+                                        <i class="ti ti-lock me-1 text-muted"></i>Confirmar contraseña
                                     </label>
                                     <div class="input-group">
                                         <input type="password" class="form-control" id="confirmarContrasenna" name="confirmarContrasenna" placeholder="Repite tu nueva contraseña" autocomplete="new-password">
@@ -79,7 +79,7 @@
 
                                 <div class="d-grid gap-2">
                                     <button type="submit" id="btnCambiarContrasenna" name="btnCambiarContrasenna" class="btn btn-primary">
-                                        <i class="fa-solid fa-floppy-disk me-2"></i>Procesar
+                                        <i class="ti ti-device-floppy me-2"></i>Procesar
                                     </button>
                                 </div>
 
@@ -95,19 +95,19 @@
                         <div class="card-body p-4">
                                        
                             <div class="security-tip">
-                                <i class="fa-solid fa-ban"></i>
+                                <i class="ti ti-ban"></i>
                                 <div>No uses contraseñas que hayas utilizado anteriormente.</div>
                             </div>
                             <div class="security-tip">
-                                <i class="fa-solid fa-user-secret"></i>
+                                <i class="ti ti-user-shield"></i>
                                 <div>No compartas tu contraseña con nadie.</div>
                             </div>
                             <div class="security-tip">
-                                <i class="fa-solid fa-rotate"></i>
+                                <i class="ti ti-refresh"></i>
                                 <div>Cambia tu contraseña cada 3 a 6 meses.</div>
                             </div>
                             <div class="security-tip">
-                                <i class="fa-solid fa-dice"></i>
+                                <i class="ti ti-dice-5"></i>
                                 <div>Combina letras, números y símbolos para mayor seguridad.</div>
                             </div>
                         </div>
