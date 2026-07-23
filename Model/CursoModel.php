@@ -26,3 +26,23 @@
             return null;
         }
     }
+
+    function RegistrarCursoModel($nombre, $cantidad, $fechaInicio, $fechaFin, $consecutivoUsuario, $imagen)
+    {
+        try
+        {
+            $conn = OpenDB();
+
+            $sql = "CALL spRegistrarCurso('$nombre', '$cantidad', '$fechaInicio', '$fechaFin', '$consecutivoUsuario', '$imagen')";
+            $response = $conn -> query($sql);
+
+            CloseDB($conn);
+            return $response;
+        }
+        catch(Exception $e)
+        {
+            AddError($e, 'RegistrarCursoModel');
+            return false;
+        }
+    }
+    

@@ -23,14 +23,22 @@
         <div class="container-fluid">
 
             <!-- Page Header -->
-            <div class="row mb-4">
-                <div class="col-12">
-                    <div class="d-flex align-items-center gap-3">
+            <div class="row mb-4 justify-content-center">
+                <div class="col-xl-11 col-lg-11 col-md-12">
+                    
+                    <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
                         <div>
                             <h1 class="fs-4 mb-0 fw-semibold">Mis Cursos</h1>
                             <p class="text-muted mb-0 small">Aquí puedes ver los cursos que estás impartiendo</p>
                         </div>
+                        
+                        <div class="d-flex justify-content-md-end">
+                            <a href="AgregarCurso.php" class="btn btn-primary">
+                                    <i class="ti ti-plus me-2"></i>Agregar curso
+                            </a>
+                        </div>
                     </div>
+                    
                     <hr class="mt-3 mb-5">
                 </div>
             </div>
@@ -38,7 +46,7 @@
             <div class="row g-4 justify-content-center">
 
                 <!-- Formulario -->
-                <div class="col-xl-10 col-lg-10 col-md-12">
+                <div class="col-xl-11 col-lg-11 col-md-12">
                     
                     <?php
                         if(isset($_POST["Mensaje"]))
@@ -47,9 +55,10 @@
                                 . $_POST["Mensaje"] . '</div>';
                         }
                     ?>
-                
-                    <div class="card form-card">
-                         <div class="card-header"></div>
+
+                    <div class="card form-card">    
+
+                        <div class="card-header"></div>
 
                         <div class="card-body p-4">
 
@@ -70,17 +79,20 @@
 
                                 <?php
                                     foreach($datos as $curso){
+                                        $fechaInicio = date('Y-m-d', strtotime($curso['Inicio']));
+                                        $fechaFin = date('Y-m-d', strtotime($curso['Fin']));
+
                                         echo '<tr>';
-                                        echo '<td>' . $curso['ConsecutivoCurso'] . '</td>';
+                                        echo '<td>' . $curso['Consecutivo'] . '</td>';
                                         echo '<td>' . $curso['Nombre'] . '</td>';
                                         echo '<td>' . $curso['Cantidad'] . '</td>';
-                                        echo '<td>' . $curso['Inicio'] . '</td>';
-                                        echo '<td>' . $curso['Fin'] . '</td>';
-                                        echo '<td><img src="' . $curso['Imagen'] . '" alt="" width="50"></td>';
+                                        echo '<td>' . $fechaInicio . '</td>';
+                                        echo '<td>' . $fechaFin . '</td>';
+                                        echo '<td><img src="' . $curso['Imagen'] . '" alt="" width="150"></td>';
                                         echo '<td>' . $curso['Activo'] . '</td>';
                                         echo '<td>
-                                                <a href="EditarCurso.php?id=' . $curso['ConsecutivoCurso'] . '" class="btn btn-sm btn-primary">Editar</a>
-                                                <a href="EliminarCurso.php?id=' . $curso['ConsecutivoCurso'] . '" class="btn btn-sm btn-danger">Eliminar</a>
+                                                <a href="EditarCurso.php?id=' . $curso['Consecutivo'] . '" class="btn btn-sm btn-primary">Actualizar</a>
+                                                <a href="CambiarEstadoCurso.php?id=' . $curso['Consecutivo'] . '" class="btn btn-sm btn-danger">Cambiar Estado</a>
                                             </td>';
                                         echo '</tr>';
                                     }
@@ -105,9 +117,7 @@
     <?php
         ImportJS();
     ?>
-    <script src="../js/cambiarPerfil.js"></script>
-    <script src="../js/nombresApi.js"></script>
-
+    
 </body>
 
 </html>
