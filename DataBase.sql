@@ -18,6 +18,38 @@ USE `mn`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `tb_curso`
+--
+
+DROP TABLE IF EXISTS `tb_curso`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tb_curso` (
+  `Consecutivo` int(11) NOT NULL AUTO_INCREMENT,
+  `Nombre` varchar(100) NOT NULL,
+  `Cantidad` int(11) NOT NULL,
+  `Inicio` datetime NOT NULL,
+  `Fin` datetime NOT NULL,
+  `Activo` bit(1) NOT NULL,
+  `Imagen` varchar(100) NOT NULL,
+  `ConsecutivoUsuario` int(11) NOT NULL,
+  PRIMARY KEY (`Consecutivo`),
+  KEY `fk_curso_usuario` (`ConsecutivoUsuario`),
+  CONSTRAINT `fk_curso_usuario` FOREIGN KEY (`ConsecutivoUsuario`) REFERENCES `tb_usuario` (`Consecutivo`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_curso`
+--
+
+LOCK TABLES `tb_curso` WRITE;
+/*!40000 ALTER TABLE `tb_curso` DISABLE KEYS */;
+INSERT INTO `tb_curso` VALUES (8,'Curso de Base de Datos',5,'2026-07-27 00:00:00','2026-07-31 00:00:00',_binary '','/RepoMN/View/Uploads/1_wJutKLI7YyNCT5znvD_Dlg.png',16),(9,'Curso de PHP',19,'2026-08-03 00:00:00','2026-09-03 00:00:00',_binary '','/RepoMN/View/Uploads/1_wJutKLI7YyNCT5znvD_Dlg.png',16);
+/*!40000 ALTER TABLE `tb_curso` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tb_error`
 --
 
@@ -160,6 +192,37 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `spConsultarCursosProfesor` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarCursosProfesor`(
+	pConsecutivo	int
+)
+BEGIN
+
+	SELECT 	Consecutivo,
+			Nombre,
+			Cantidad,
+			Inicio,
+			Fin,
+			CASE WHEN Activo = 1 THEN 'Activo' ELSE 'Inactivo' END Activo,
+            Imagen
+	FROM 	tb_curso C
+    WHERE	ConsecutivoUsuario = pConsecutivo;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `spConsultarUsuario` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -221,6 +284,35 @@ BEGIN
 	WHERE	(Identificacion = pIdentificacionCorreo OR CorreoElectronico = pIdentificacionCorreo)
 		AND Contrasenna = pContrasenna
         AND Estado = 1;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `spRegistrarCurso` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spRegistrarCurso`(
+	pNombre 				varchar(100), 
+    pCantidad				int, 
+    pFechaInicio			date, 
+    pFechaFin				date,
+    pConsecutivoUsuario 	int,
+    pImagen					varchar(100)
+)
+BEGIN
+
+	INSERT INTO tb_curso(Nombre,Cantidad,Inicio,Fin,Activo,Imagen,ConsecutivoUsuario)
+	VALUES (pNombre,pCantidad,pFechaInicio,pFechaFin,1,pImagen,pConsecutivoUsuario);
 
 END ;;
 DELIMITER ;
@@ -324,4 +416,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-07-15 20:59:52
+-- Dump completed on 2026-07-22 21:06:47
