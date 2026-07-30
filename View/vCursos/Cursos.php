@@ -117,6 +117,7 @@
     <?php
         ImportJS();
     ?>
+    <script src="../js/verCursos.js"></script>
     
 </body>
 

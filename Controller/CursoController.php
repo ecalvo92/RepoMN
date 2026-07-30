@@ -19,17 +19,19 @@
         $fechaInicio = $_POST["fechaInicio"];
         $fechaFin = $_POST["fechaFin"];
         $consecutivoUsuario = $_SESSION["ConsecutivoUsuario"];
-        $imagen = '/RepoMN/View/Uploads/' . $_FILES["imagen"]["name"];
 
-        $origen = $_FILES["imagen"]["tmp_name"];
-        $destino = $_SERVER['DOCUMENT_ROOT'] . $imagen;
-        copy($origen, $destino);
-     
-        $datos = RegistrarCursoModel($nombre, $cantidad, $fechaInicio, $fechaFin, $consecutivoUsuario, $imagen);
+        $consecutivoCurso = RegistrarCursoModel($nombre, $cantidad, $fechaInicio, $fechaFin, $consecutivoUsuario);
 
-        if($datos)
+        if($consecutivoCurso)
         {
-             header("Location: ../../View/vCursos/Cursos.php");
+            $imagen = '/RepoMN/View/Uploads/' . $consecutivoCurso . '.png';
+            $origen = $_FILES["imagen"]["tmp_name"];
+            $destino = $_SERVER['DOCUMENT_ROOT'] . $imagen;
+            copy($origen, $destino);
+
+            ActualizarImagenCursoModel($consecutivoCurso, $imagen);
+
+            header("Location: ../../View/vCursos/Cursos.php");
             exit();
         }
 
