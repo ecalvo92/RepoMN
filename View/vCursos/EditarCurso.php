@@ -59,7 +59,12 @@
 
                         <div class="card-body p-4">
 
-                            <form id="formAgregarCurso" action="" method="POST" enctype="multipart/form-data">
+                            <form id="formEditarCurso" action="" method="POST" enctype="multipart/form-data">
+
+                                <div class="input-group">
+                                    <input type="hidden" id="consecutivo" name="consecutivo"
+                                    value="<?php echo $datos['Consecutivo']; ?>">
+                                </div>
 
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
@@ -115,7 +120,7 @@
                                 </div>
 
                                 <div class="d-grid gap-2">
-                                    <button type="submit" id="btnAgregarCurso" name="btnAgregarCurso" class="btn btn-primary">
+                                    <button type="submit" id="btnEditarCurso" name="btnEditarCurso" class="btn btn-primary">
                                         <i class="ti ti-device-floppy me-2"></i>Procesar
                                     </button>
                                 </div>
@@ -133,7 +138,7 @@
                             <h6 class="fw-semibold mb-3">
                                 <i class="ti ti-photo me-2"></i>Imagen actual
                             </h6>
-                            <img src="<?php echo $datos['Imagen']; ?>" alt="Imagen del curso"
+                            <img id="imagenActual" src="<?php echo $datos['Imagen']; ?>" alt="Imagen del curso"
                                 class="img-fluid rounded shadow">
                             
                         </div>
@@ -152,7 +157,7 @@
     <?php
         ImportJS();
     ?>
-    <script src="../js/agregarCurso.js"></script>
+    <script src="../js/actualizarCurso.js"></script>
 
 </body>
 

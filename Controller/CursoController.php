@@ -46,4 +46,32 @@
         $_POST["Mensaje"] = "No se ha podido registrar la información del curso";
     }
 
+    if(isset($_POST["btnEditarCurso"]))
+    {
+        $consecutivo = $_POST["consecutivo"];
+        $nombre = $_POST["nombre"];
+        $cantidad = $_POST["cantidad"];
+        $fechaInicio = $_POST["fechaInicio"];
+        $fechaFin = $_POST["fechaFin"];
+
+        $actualizacion = ActualizarCursoModel($nombre, $cantidad, $fechaInicio, $fechaFin, $consecutivo);
+
+        if($actualizacion)
+        {
+            if($_FILES["imagen"]["tmp_name"] != null)
+            {
+                $imagen = '/RepoMN/View/Uploads/' . $consecutivo . '.png';
+                $origen = $_FILES["imagen"]["tmp_name"];
+                $destino = $_SERVER['DOCUMENT_ROOT'] . $imagen;
+                copy($origen, $destino);
+            }
+        
+            header("Location: ../../View/vCursos/Cursos.php");
+            exit();
+        }
+
+        $_POST["Mensaje"] = "No se ha podido actualizar la información del curso";
+    }
+    
+
     

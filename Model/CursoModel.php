@@ -96,4 +96,22 @@
             return false;
         }
     }
-    
+
+    function ActualizarCursoModel($nombre, $cantidad, $fechaInicio, $fechaFin, $consecutivo)
+    {
+        try
+        {
+            $conn = OpenDB();
+
+            $sql = "CALL spActualizarCurso('$nombre', '$cantidad', '$fechaInicio', '$fechaFin', '$consecutivo')";
+            $conn->query($sql);
+
+            CloseDB($conn);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            AddError($e, 'ActualizarCursoModel');
+            return false;
+        }
+    }
