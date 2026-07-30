@@ -63,7 +63,7 @@
                                         <i class="ti ti-key me-1 text-muted"></i>Contraseña nueva
                                     </label>
                                     <div class="input-group">
-                                        <input type="password" class="form-control" id="nuevaContrasenna" name="nuevaContrasenna" placeholder="Ingresa tu nueva contraseña" autocomplete="new-password">
+                                        <input type="password" class="form-control" id="nuevaContrasenna" name="nuevaContrasenna" autocomplete="new-password">
                                     </div>
                                 </div>
 
@@ -73,7 +73,7 @@
                                         <i class="ti ti-lock me-1 text-muted"></i>Confirmar contraseña
                                     </label>
                                     <div class="input-group">
-                                        <input type="password" class="form-control" id="confirmarContrasenna" name="confirmarContrasenna" placeholder="Repite tu nueva contraseña" autocomplete="new-password">
+                                        <input type="password" class="form-control" id="confirmarContrasenna" name="confirmarContrasenna" autocomplete="new-password">
                                     </div>
                                 </div>
 

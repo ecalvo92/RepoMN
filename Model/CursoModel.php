@@ -27,6 +27,32 @@
         }
     }
 
+    function ConsultarCursoModel($consecutivo)
+    {
+        try
+        {
+            $conn = OpenDB();
+
+            $sql = "CALL spConsultarCurso('$consecutivo')";
+            $response = $conn -> query($sql);
+
+            //Se guarda el resultado en una variable nueva
+            $datos = null;
+            while($fila = $response -> fetch_assoc())
+            {
+                $datos = $fila;
+            }
+
+            CloseDB($conn);
+            return $datos;
+        }
+        catch(Exception $e)
+        {
+            AddError($e, 'ConsultarCursoModel');
+            return null;
+        }
+    }
+
     function RegistrarCursoModel($nombre, $cantidad, $fechaInicio, $fechaFin, $consecutivoUsuario)
     {
         try

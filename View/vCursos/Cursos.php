@@ -86,13 +86,17 @@
                                         echo '<td>' . $curso['Consecutivo'] . '</td>';
                                         echo '<td>' . $curso['Nombre'] . '</td>';
                                         echo '<td>' . $curso['Cantidad'] . '</td>';
-                                        echo '<td>' . $fechaInicio . '</td>';
-                                        echo '<td>' . $fechaFin . '</td>';
+                                        echo '<td>' . date('Y-m-d', strtotime($fechaInicio)) . '</td>';
+                                        echo '<td>' . date('Y-m-d', strtotime($fechaFin)) . '</td>';
                                         echo '<td><img src="' . $curso['Imagen'] . '" alt="" width="150"></td>';
                                         echo '<td>' . $curso['Activo'] . '</td>';
                                         echo '<td>
-                                                <a href="EditarCurso.php?id=' . $curso['Consecutivo'] . '" class="btn btn-sm btn-primary">Actualizar</a>
-                                                <a href="CambiarEstadoCurso.php?id=' . $curso['Consecutivo'] . '" class="btn btn-sm btn-danger">Cambiar Estado</a>
+                                                <a href="EditarCurso.php?consecutivo=' . $curso['Consecutivo'] . '" class="btn btn-sm btn-primary">
+                                                    <i class="ti ti-pencil fs-5"></i>
+                                                </a>
+                                                <a href="CambiarEstadoCurso.php?consecutivo=' . $curso['Consecutivo'] . '" class="btn btn-sm btn-danger ms-1">
+                                                    <i class="ti ti-trash fs-5"></i>
+                                                </a>
                                             </td>';
                                         echo '</tr>';
                                     }

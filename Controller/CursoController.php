@@ -12,6 +12,12 @@
         return $datos;
     }
 
+    function ConsultarCurso($consecutivo)
+    {
+        $datos = ConsultarCursoModel($consecutivo);
+        return $datos;
+    }
+
     if(isset($_POST["btnAgregarCurso"]))
     {
         $nombre = $_POST["nombre"];
