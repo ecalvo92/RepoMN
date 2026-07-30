@@ -24,12 +24,14 @@
 
         if($consecutivoCurso)
         {
-            $imagen = '/RepoMN/View/Uploads/' . $consecutivoCurso . '.png';
+            $consecutivo = $consecutivoCurso["ID"];
+
+            $imagen = '/RepoMN/View/Uploads/' . $consecutivo . '.png';
             $origen = $_FILES["imagen"]["tmp_name"];
             $destino = $_SERVER['DOCUMENT_ROOT'] . $imagen;
             copy($origen, $destino);
 
-            ActualizarImagenCursoModel($consecutivoCurso, $imagen);
+            ActualizarImagenCursoModel($consecutivo, $imagen);
 
             header("Location: ../../View/vCursos/Cursos.php");
             exit();
