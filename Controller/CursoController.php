@@ -72,6 +72,19 @@
 
         $_POST["Mensaje"] = "No se ha podido actualizar la información del curso";
     }
-    
 
+    if(isset($_POST["InactivarCurso"]))
+    {
+        $consecutivo = $_POST["consecutivo"];
+
+        $actualizacion = InactivarCursoModel($consecutivo);
+
+        if($actualizacion)
+        {       
+           return json_encode(["status" => "Ok"]);
+        }
+
+        return json_encode(["status" => "Error"]);
+    }
+    
     

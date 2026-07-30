@@ -10,3 +10,33 @@ $(document).ready(function () {
         }
     });
 });
+
+$(document).on("click", ".btn-cancelar", function () {
+    const cursoId = $(this).data("id");
+    const cursoNombre = $(this).data("nombre");
+
+    Swal.fire({
+        text: `¿Deseas inactivar "${cursoNombre}"?`,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Sí',
+        cancelButtonText: 'No'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            
+            $.ajax({
+                url: '../../Controller/CursoController.php',
+                type: 'POST',
+                data: {
+                    InactivarCurso: 'InactivarCurso',
+                    consecutivo: cursoId
+                },
+                success: function (response) {
+                    location.reload();
+                }
+            });
+
+        }
+    });
+
+});

@@ -115,3 +115,22 @@
             return false;
         }
     }
+
+    function InactivarCursoModel($consecutivo)
+    {
+        try
+        {
+            $conn = OpenDB();
+
+            $sql = "CALL spInactivarCurso('$consecutivo')";
+            $conn->query($sql);
+
+            CloseDB($conn);
+            return true;
+        }
+        catch(Exception $e)
+        {
+            AddError($e, 'InactivarCursoModel');
+            return false;
+        }
+    }

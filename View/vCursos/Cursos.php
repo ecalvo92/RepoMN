@@ -93,11 +93,15 @@
                                         echo '<td>
                                                 <a href="EditarCurso.php?consecutivo=' . $curso['Consecutivo'] . '" class="btn btn-sm btn-primary">
                                                     <i class="ti ti-pencil fs-5"></i>
-                                                </a>
-                                                <a href="CambiarEstadoCurso.php?consecutivo=' . $curso['Consecutivo'] . '" class="btn btn-sm btn-danger ms-1">
+                                                </a>';
+
+                                            if($curso['Activo'] == 'Activo') {
+                                                echo '<a class="btn-cancelar btn btn-sm btn-danger ms-1" data-id="' . $curso['Consecutivo'] . '" data-nombre="' . $curso['Nombre'] . '">
                                                     <i class="ti ti-trash fs-5"></i>
-                                                </a>
-                                            </td>';
+                                                </a>';
+                                            }
+
+                                        echo '</td>';
                                         echo '</tr>';
                                     }
                                 ?>
