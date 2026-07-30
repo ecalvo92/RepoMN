@@ -22,9 +22,17 @@
                 <div class="col-12">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <div class="">
-                            <h1 class="fs-3 mb-1">Inventory</h1>
+                            <h1 class="fs-3 mb-1">Cursos</h1>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    
+                    <div id="calendario"></div>
+
                 </div>
             </div>
 
@@ -38,6 +46,7 @@
     <?php
         ImportJS();
     ?>
+    <script src="../js/principal.js"></script>
 
 </body>
 

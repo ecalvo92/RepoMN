@@ -15,6 +15,7 @@ function ImportCSS()
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="https://cdn.datatables.net/2.3.4/css/dataTables.bootstrap5.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css" />
         <link rel="stylesheet" href="../css/main.css" />
         </head>
     ';
@@ -29,6 +30,8 @@ function ImportJS()
         <script src="https://cdn.datatables.net/2.3.4/js/dataTables.js"></script>
         <script src="https://cdn.datatables.net/2.3.4/js/dataTables.bootstrap5.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/locales-all.global.min.js"></script>
         <script src="../js/sidebar.js"></script>
     ';
 }
@@ -123,9 +126,6 @@ function Sidebar()
             if($consecutivoRol == 1) {
                 echo '<li><a class="nav-link active" href="../vCursos/Cursos.php"><i class="ti ti-book-2"></i><span
                         class="nav-text">Cursos</span></a></li>';
-
-                echo '<li><a class="nav-link active" href=""><i class="ti ti-clipboard-list"></i><span
-                        class="nav-text">Asignaciones</span></a></li>';
             }
             else {   
                 echo '<li><a class="nav-link active" href=""><i class="ti ti-school"></i><span
