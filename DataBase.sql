@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `mn` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
-USE `mn`;
 -- MySQL dump 10.13  Distrib 8.0.46, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: mn
@@ -36,7 +34,7 @@ CREATE TABLE `tb_curso` (
   PRIMARY KEY (`Consecutivo`),
   KEY `fk_curso_usuario` (`ConsecutivoUsuario`),
   CONSTRAINT `fk_curso_usuario` FOREIGN KEY (`ConsecutivoUsuario`) REFERENCES `tb_usuario` (`Consecutivo`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +43,7 @@ CREATE TABLE `tb_curso` (
 
 LOCK TABLES `tb_curso` WRITE;
 /*!40000 ALTER TABLE `tb_curso` DISABLE KEYS */;
-INSERT INTO `tb_curso` VALUES (8,'Curso de Base de Datos',5,'2026-07-27 00:00:00','2026-07-31 00:00:00',_binary '','/RepoMN/View/Uploads/1_wJutKLI7YyNCT5znvD_Dlg.png',16),(9,'Curso de PHP',19,'2026-08-03 00:00:00','2026-09-03 00:00:00',_binary '','/RepoMN/View/Uploads/1_wJutKLI7YyNCT5znvD_Dlg.png',16);
+INSERT INTO `tb_curso` VALUES (13,'Curso de PHP',6,'2026-09-01 00:00:00','2026-09-30 00:00:00',_binary '\0','/RepoMN/View/Uploads/13.png',16),(14,'Curso de MySQL',4,'2026-08-01 00:00:00','2026-08-31 00:00:00',_binary '\0','/RepoMN/View/Uploads/14.png',16);
 /*!40000 ALTER TABLE `tb_curso` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -72,7 +70,6 @@ CREATE TABLE `tb_error` (
 
 LOCK TABLES `tb_error` WRITE;
 /*!40000 ALTER TABLE `tb_error` DISABLE KEYS */;
-INSERT INTO `tb_error` VALUES (1,'Duplicate entry \'jmatamoros60796@ufide.ac.cr\' for key \'UK_CorreoElectronico\'','2026-06-17 19:10:35','RegistrarUsuarioModel',0),(2,'Duplicate entry \'jmatamoros60796@ufide.ac.cr\' for key \'UK_CorreoElectronico\'','2026-06-17 19:43:19','RegistrarUsuarioModel',0),(3,'Duplicate entry \'jmatamoros60796@ufide.ac.cr\' for key \'UK_CorreoElectronico\'','2026-06-17 19:45:22','RegistrarUsuarioModel',0),(4,'Duplicate entry \'jmatamoros60796@ufide.ac.cr\' for key \'UK_CorreoElectronico\'','2026-06-17 19:45:47','RegistrarUsuarioModel',0),(5,'Duplicate entry \'\' for key \'UK_Identificacion\'','2026-06-17 20:27:10','RegistrarUsuarioModel',0),(6,'Duplicate entry \'\' for key \'UK_Identificacion\'','2026-06-17 20:27:15','RegistrarUsuarioModel',0),(7,'Duplicate entry \'304590415\' for key \'UK_Identificacion\'','2026-06-17 20:53:29','RegistrarUsuarioModel',0),(8,'Duplicate entry \'304590415\' for key \'UK_Identificacion\'','2026-06-17 20:55:38','RegistrarUsuarioModel',0),(9,'Duplicate entry \'304590415\' for key \'UK_Identificacion\'','2026-06-17 20:56:03','RegistrarUsuarioModel',0);
 /*!40000 ALTER TABLE `tb_error` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -162,6 +159,64 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `spActualizarCurso` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spActualizarCurso`(
+	pNombre 		varchar(100), 
+    pCantidad		int,
+    pFechaInicio	datetime,
+    pFechaFin		datetime,
+    pConsecutivo	int
+)
+BEGIN
+
+	UPDATE 	tb_curso
+	SET		Nombre = pNombre,
+			Cantidad = pCantidad,
+            Inicio = pFechaInicio,
+            Fin = pFechaFin
+	WHERE 	Consecutivo = pConsecutivo;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `spActualizarImagenCurso` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spActualizarImagenCurso`(
+	pConsecutivo 	int, 
+    pImagen			varchar(100)
+)
+BEGIN
+
+	UPDATE 	tb_curso
+	SET		Imagen = pImagen
+	WHERE 	Consecutivo = pConsecutivo;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `spActualizarPerfil` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -185,6 +240,37 @@ BEGIN
 			Nombre = pNombre,
             CorreoElectronico = pCorreoElectronico
 	WHERE 	Consecutivo = pConsecutivo;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `spConsultarCurso` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarCurso`(
+	pConsecutivo	int
+)
+BEGIN
+
+	SELECT 	Consecutivo,
+			Nombre,
+			Cantidad,
+			Inicio,
+			Fin,
+			CASE WHEN Activo = 1 THEN 'Activo' ELSE 'Inactivo' END Activo,
+            Imagen
+	FROM 	tb_curso C
+    WHERE	Consecutivo = pConsecutivo;
 
 END ;;
 DELIMITER ;
@@ -255,6 +341,31 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `spInactivarCurso` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spInactivarCurso`(
+    pConsecutivo	int
+)
+BEGIN
+
+	UPDATE 	tb_curso
+	SET		Activo = 0
+	WHERE 	Consecutivo = pConsecutivo;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `spIniciarSesionUsuario` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -313,6 +424,8 @@ BEGIN
 
 	INSERT INTO tb_curso(Nombre,Cantidad,Inicio,Fin,Activo,Imagen,ConsecutivoUsuario)
 	VALUES (pNombre,pCantidad,pFechaInicio,pFechaFin,1,pImagen,pConsecutivoUsuario);
+    
+    SELECT LAST_INSERT_ID() 'ID';
 
 END ;;
 DELIMITER ;
@@ -416,4 +529,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-07-22 21:06:47
+-- Dump completed on 2026-07-29 21:04:57
