@@ -32,7 +32,16 @@ $(document).on("click", ".btn-cancelar", function () {
                     consecutivo: cursoId
                 },
                 success: function (response) {
-                    location.reload();
+
+                    swal.fire({
+                        title: 'Información',
+                        text: 'El curso ha sido inactivado correctamente.',
+                        icon: 'info',
+                        confirmButtonText: 'Aceptar'
+                    }).then(() => {
+                        location.reload();
+                    });
+                
                 }
             });
 
