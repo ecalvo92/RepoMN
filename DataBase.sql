@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `mn` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
+USE `mn`;
 -- MySQL dump 10.13  Distrib 8.0.46, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: mn
@@ -34,7 +36,7 @@ CREATE TABLE `tb_curso` (
   PRIMARY KEY (`Consecutivo`),
   KEY `fk_curso_usuario` (`ConsecutivoUsuario`),
   CONSTRAINT `fk_curso_usuario` FOREIGN KEY (`ConsecutivoUsuario`) REFERENCES `tb_usuario` (`Consecutivo`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +45,7 @@ CREATE TABLE `tb_curso` (
 
 LOCK TABLES `tb_curso` WRITE;
 /*!40000 ALTER TABLE `tb_curso` DISABLE KEYS */;
-INSERT INTO `tb_curso` VALUES (13,'Curso de PHP',6,'2026-09-01 00:00:00','2026-09-30 00:00:00',_binary '\0','/RepoMN/View/Uploads/13.png',16),(14,'Curso de MySQL',4,'2026-08-01 00:00:00','2026-08-31 00:00:00',_binary '\0','/RepoMN/View/Uploads/14.png',16);
+INSERT INTO `tb_curso` VALUES (17,'Tutoría de MySQL',2,'2026-08-06 12:00:00','2026-08-06 14:00:00',_binary '','/RepoMN/View/Uploads/17.png',16),(18,'Tutoría de Progra',2,'2026-08-05 20:00:00','2026-08-08 22:00:00',_binary '','/RepoMN/View/Uploads/18.png',16),(19,'Curso de VideoJuegos',4,'2026-08-10 18:00:00','2026-08-10 09:00:00',_binary '','/RepoMN/View/Uploads/19.png',21);
 /*!40000 ALTER TABLE `tb_curso` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -71,6 +73,36 @@ CREATE TABLE `tb_error` (
 LOCK TABLES `tb_error` WRITE;
 /*!40000 ALTER TABLE `tb_error` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tb_error` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_matricula`
+--
+
+DROP TABLE IF EXISTS `tb_matricula`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tb_matricula` (
+  `Consecutivo` int(11) NOT NULL AUTO_INCREMENT,
+  `ConsecutivoUsuario` int(11) NOT NULL,
+  `ConsecutivoCurso` int(11) NOT NULL,
+  `FechaMatricula` datetime NOT NULL,
+  PRIMARY KEY (`Consecutivo`),
+  KEY `fk_tb_matricula_curso` (`ConsecutivoCurso`),
+  KEY `fk_tb_matricula_usuario` (`ConsecutivoUsuario`),
+  CONSTRAINT `fk_tb_matricula_curso` FOREIGN KEY (`ConsecutivoCurso`) REFERENCES `tb_curso` (`Consecutivo`),
+  CONSTRAINT `fk_tb_matricula_usuario` FOREIGN KEY (`ConsecutivoUsuario`) REFERENCES `tb_usuario` (`Consecutivo`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_matricula`
+--
+
+LOCK TABLES `tb_matricula` WRITE;
+/*!40000 ALTER TABLE `tb_matricula` DISABLE KEYS */;
+INSERT INTO `tb_matricula` VALUES (1,20,19,'2026-08-06 20:41:00');
+/*!40000 ALTER TABLE `tb_matricula` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -126,7 +158,7 @@ CREATE TABLE `tb_usuario` (
 
 LOCK TABLES `tb_usuario` WRITE;
 /*!40000 ALTER TABLE `tb_usuario` DISABLE KEYS */;
-INSERT INTO `tb_usuario` VALUES (16,'304590415','EDUARDO JOSE CALVO CASTILLO','ecalvo90415@ufide.ac.cr','12345',_binary '',1),(20,'118780222','JUAN JOSE SALAS AMADOR','jsalas80222@ufide.ac.cr','12345',_binary '',2),(21,'207480733','JOSETH STEVEN CESPEDES MOYA','jcespedes80733@ufide.ac.cr','12345',_binary '',2);
+INSERT INTO `tb_usuario` VALUES (16,'304590415','EDUARDO JOSE CALVO CASTILLO','ecalvo90415@ufide.ac.cr','12345',_binary '',1),(20,'118780222','JUAN JOSE SALAS AMADOR','jsalas80222@ufide.ac.cr','12345',_binary '',2),(21,'207480733','JOSETH STEVEN CESPEDES MOYA','jcespedes80733@ufide.ac.cr','12345',_binary '',1);
 /*!40000 ALTER TABLE `tb_usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -278,6 +310,41 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `spConsultarCursosDisponibles` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarCursosDisponibles`(
+    pConsecutivoEstudiante INT
+)
+BEGIN
+    SELECT  C.Consecutivo,
+            C.Nombre,
+            Cantidad,
+            Inicio,
+            Fin,
+            CASE WHEN C.Activo = 1 THEN 'Activo' ELSE 'Inactivo' END Activo,
+            Imagen,
+            U.Nombre 'NombreProfesor'
+    FROM    tb_curso C
+    INNER JOIN tb_usuario U  ON C.ConsecutivoUsuario = U.Consecutivo
+    LEFT  JOIN tb_matricula M ON C.Consecutivo = M.ConsecutivoCurso
+                              AND M.ConsecutivoUsuario = pConsecutivoEstudiante
+    WHERE   C.Activo = 1
+        AND C.Inicio >= NOW()
+        AND M.ConsecutivoCurso IS NULL;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `spConsultarCursosProfesor` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -415,8 +482,8 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spRegistrarCurso`(
 	pNombre 				varchar(100), 
     pCantidad				int, 
-    pFechaInicio			date, 
-    pFechaFin				date,
+    pFechaInicio			datetime, 
+    pFechaFin				datetime,
     pConsecutivoUsuario 	int,
     pImagen					varchar(100)
 )
@@ -529,4 +596,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-07-29 21:04:57
+-- Dump completed on 2026-08-05 20:59:27
