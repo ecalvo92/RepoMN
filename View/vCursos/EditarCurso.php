@@ -94,8 +94,8 @@
                                             <i class="ti ti-calendar me-1 text-muted"></i>Fecha de Inicio
                                         </label>
                                         <div class="input-group">
-                                            <input type="date" class="form-control" id="fechaInicio" name="fechaInicio"
-                                            value="<?php echo date('Y-m-d', strtotime($datos['Inicio'])); ?>">
+                                            <input type="text" class="form-control flatpickr-datetime" id="fechaInicio" name="fechaInicio"
+                                            value="<?php echo date('d-m-Y', strtotime($datos['Inicio'])); ?>">
                                         </div>
                                     </div>
 
@@ -104,8 +104,8 @@
                                             <i class="ti ti-calendar me-1 text-muted"></i>Fecha de Fin
                                         </label>
                                         <div class="input-group">
-                                            <input type="date" class="form-control" id="fechaFin" name="fechaFin"
-                                            value="<?php echo date('Y-m-d', strtotime($datos['Fin'])); ?>">
+                                            <input type="text" class="form-control flatpickr-datetime" id="fechaFin" name="fechaFin"
+                                            value="<?php echo date('d-m-Y', strtotime($datos['Fin'])); ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -157,6 +157,7 @@
     <?php
         ImportJS();
     ?>
+    <script src="../js/calendarios.js"></script>
     <script src="../js/actualizarCurso.js"></script>
 
 </body>

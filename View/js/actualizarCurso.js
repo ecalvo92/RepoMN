@@ -1,5 +1,7 @@
 $(function () {
 
+    InicializarCalendarios();
+
     $.validator.addMethod("pngOnly", function (value, element) {
         if (this.optional(element)) {
             return true;

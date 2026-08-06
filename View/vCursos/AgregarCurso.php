@@ -84,7 +84,7 @@
                                             <i class="ti ti-calendar me-1 text-muted"></i>Fecha de Inicio
                                         </label>
                                         <div class="input-group">
-                                            <input type="date" class="form-control" id="fechaInicio" name="fechaInicio">
+                                            <input type="text" class="form-control flatpickr-datetime" id="fechaInicio" name="fechaInicio">
                                         </div>
                                     </div>
 
@@ -93,7 +93,7 @@
                                             <i class="ti ti-calendar me-1 text-muted"></i>Fecha de Fin
                                         </label>
                                         <div class="input-group">
-                                            <input type="date" class="form-control" id="fechaFin" name="fechaFin">
+                                            <input type="text" class="form-control flatpickr-datetime" id="fechaFin" name="fechaFin">
                                         </div>
                                     </div>
                                 </div>
@@ -131,6 +131,7 @@
     <?php
         ImportJS();
     ?>
+    <script src="../js/calendarios.js"></script>
     <script src="../js/agregarCurso.js"></script>
 
 </body>
