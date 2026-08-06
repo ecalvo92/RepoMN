@@ -18,16 +18,7 @@ $(document).ready(function () {
             center: 'title',
             right: 'dayGridMonth,timeGridWeek'
         },
-        events: [
-            {
-                title: 'Curso 1',
-                start: '2026-06-12',
-                end: '2026-06-12',
-                startTime: '10:00',
-                endTime: '12:00',
-                color: '#007bff'
-            }
-        ],
+        events: ConsultarEventos,
         eventTimeFormat: {
             hour: '2-digit',
             minute: '2-digit',
@@ -38,3 +29,21 @@ $(document).ready(function () {
     calendario.render();
 
 });
+
+function ConsultarEventos(info, successCallback, failureCallback) {
+
+    $.ajax({
+        url: "../../Controller/CursoController.php",
+        method: "POST",
+        data: {
+            ConsultarCursosProfesorCalendario: 'ConsultarCursosProfesorCalendario'
+        },
+        dataType: "json",
+        success: function (response) {
+            successCallback(response);
+        },
+        error: function () {
+            failureCallback();
+        }
+    });
+}

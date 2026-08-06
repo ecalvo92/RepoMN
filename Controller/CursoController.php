@@ -4,6 +4,25 @@
      if(session_status() == PHP_SESSION_NONE){
         session_start();
     }
+
+    if(isset($_POST["ConsultarCursosProfesorCalendario"]))
+    {
+        $datos = ConsultarCursosProfesor();
+        $eventos = [];
+
+        foreach($datos as $curso)
+        {
+            $evento = [
+                "title" => $curso["Nombre"],
+                "start" => $curso["Inicio"],
+                "end" => date('Y-m-d', strtotime($curso["Fin"] . ' +1 day'))
+            ];
+
+            array_push($eventos, $evento);
+        }
+
+        echo json_encode($eventos);
+    }
     
     function ConsultarCursosProfesor()
     {
@@ -86,5 +105,3 @@
 
         return json_encode(["status" => "Error"]);
     }
-    
-    
