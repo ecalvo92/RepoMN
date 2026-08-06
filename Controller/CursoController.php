@@ -105,3 +105,9 @@
 
         return json_encode(["status" => "Error"]);
     }
+
+    function ConsultarCursosDisponibles()
+    {
+        $datos = ConsultarCursosDisponiblesModel();
+        return $datos;
+    }

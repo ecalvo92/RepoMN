@@ -131,8 +131,8 @@ function Sidebar()
                         class="nav-text">Cursos Registrados</span></a></li>';
             }
             else {   
-                echo '<li><a class="nav-link active" href=""><i class="ti ti-school"></i><span
-                        class="nav-text">Mi Matricula</span></a></li>';
+                echo '<li><a class="nav-link active" href="../vCursos/CursosDisponibles.php"><i class="ti ti-school"></i><span
+                        class="nav-text">Cursos Disponibles</span></a></li>';
                         
                 echo '<li><a class="nav-link active" href=""><i class="ti ti-file-upload"></i><span
                         class="nav-text">Mis Entregas</span></a></li>';

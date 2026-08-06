@@ -40333,3 +40333,11 @@ fieldset:disabled .btn {
     font-size: 1.3rem;
     flex-shrink: 0;
 }
+.card-curso {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+.card-curso:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.15) !important;
+}

@@ -134,3 +134,30 @@
             return false;
         }
     }
+
+    function ConsultarCursosDisponiblesModel()
+    {
+        try
+        {
+            $conn = OpenDB();
+
+            $sql = "CALL spConsultarCursosDisponibles()";
+            $response = $conn -> query($sql);
+
+            //Se guarda el resultado en una variable nueva
+            $datos = [];
+            while($fila = $response -> fetch_assoc())
+            {
+                $datos[] = $fila;
+            }
+
+            CloseDB($conn);
+            return $datos;
+        }
+        catch(Exception $e)
+        {
+            AddError($e, 'ConsultarCursosDisponiblesModel');
+            return null;
+        }
+    }
+    
