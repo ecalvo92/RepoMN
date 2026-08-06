@@ -14,8 +14,8 @@
         {
             $evento = [
                 "title" => $curso["Nombre"],
-                "start" => $curso["Inicio"],
-                "end" => date('Y-m-d', strtotime($curso["Fin"] . ' +1 day'))
+                "start" => date('Y-m-d\TH:i:s', strtotime($curso["Inicio"])),
+                "end" => date('Y-m-d\TH:i:s', strtotime($curso["Fin"]))
             ];
 
             array_push($eventos, $evento);

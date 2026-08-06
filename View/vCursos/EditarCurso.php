@@ -95,7 +95,7 @@
                                         </label>
                                         <div class="input-group">
                                             <input type="text" class="form-control flatpickr-datetime" id="fechaInicio" name="fechaInicio"
-                                            value="<?php echo date('Y-m-d', strtotime($datos['Inicio'])); ?>">
+                                            value="<?php echo date('Y-m-d\TH:i', strtotime($datos['Inicio'])); ?>">
                                         </div>
                                     </div>
 
@@ -105,7 +105,7 @@
                                         </label>
                                         <div class="input-group">
                                             <input type="text" class="form-control flatpickr-datetime" id="fechaFin" name="fechaFin"
-                                            value="<?php echo date('Y-m-d', strtotime($datos['Fin'])); ?>">
+                                            value="<?php echo date('Y-m-d\TH:i', strtotime($datos['Fin'])); ?>">
                                         </div>
                                     </div>
                                 </div>

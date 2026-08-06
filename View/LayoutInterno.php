@@ -128,7 +128,7 @@ function Sidebar()
 
             if($consecutivoRol == 1) {
                 echo '<li><a class="nav-link active" href="../vCursos/Cursos.php"><i class="ti ti-book-2"></i><span
-                        class="nav-text">Cursos</span></a></li>';
+                        class="nav-text">Cursos Registrados</span></a></li>';
             }
             else {   
                 echo '<li><a class="nav-link active" href=""><i class="ti ti-school"></i><span

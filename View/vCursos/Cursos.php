@@ -79,8 +79,8 @@
 
                                 <?php
                                     foreach($datos as $curso){
-                                        $fechaInicio = date('d-m-Y', strtotime($curso['Inicio']));
-                                        $fechaFin = date('d-m-Y', strtotime($curso['Fin']));
+                                        $fechaInicio = date('d-m-Y H:i A', strtotime($curso['Inicio']));
+                                        $fechaFin = date('d-m-Y H:i A', strtotime($curso['Fin']));
 
                                         echo '<tr>';
                                         echo '<td>' . $curso['Consecutivo'] . '</td>';
