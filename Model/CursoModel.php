@@ -135,13 +135,13 @@
         }
     }
 
-    function ConsultarCursosDisponiblesModel()
+    function ConsultarCursosDisponiblesModel($consecutivo)
     {
         try
         {
             $conn = OpenDB();
 
-            $sql = "CALL spConsultarCursosDisponibles()";
+            $sql = "CALL spConsultarCursosDisponibles('$consecutivo')";
             $response = $conn -> query($sql);
 
             //Se guarda el resultado en una variable nueva

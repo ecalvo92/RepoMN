@@ -108,6 +108,7 @@
 
     function ConsultarCursosDisponibles()
     {
-        $datos = ConsultarCursosDisponiblesModel();
+        $consecutivo = $_SESSION["ConsecutivoUsuario"];
+        $datos = ConsultarCursosDisponiblesModel($consecutivo);
         return $datos;
     }

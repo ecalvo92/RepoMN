@@ -88,9 +88,15 @@
                                         <span>Fin: <?php echo $fechaFin; ?></span>
                                     </div>
                                 </div>
-                                <div class="card-footer d-flex justify-content-between align-items-center">
-                                    
+                                <div class="card-footer d-flex justify-content-center align-items-center">
 
+                                    <?php if($activo): ?>
+                                    <button class="btn btn-sm btn-primary btn-matricular"
+                                        data-id="<?php echo (int)$curso['Consecutivo']; ?>"
+                                        data-nombre="<?php echo htmlspecialchars($curso['Nombre'], ENT_QUOTES); ?>">
+                                        Matricular
+                                    </button>
+                                    <?php endif; ?>
 
                                 </div>
                             </div>
@@ -114,6 +120,7 @@
     <?php
         ImportJS();
     ?>
+    <script src="../js/matricularCurso.js"></script>
     
 </body>
 
